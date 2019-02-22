@@ -16,21 +16,52 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
+  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  struct nib {
+    /// Nib `FeedView`.
+    static let feedView = _R.nib._FeedView()
+    /// Nib `MovieTableViewCell`.
+    static let movieTableViewCell = _R.nib._MovieTableViewCell()
+    
+    /// `UINib(name: "FeedView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.feedView) instead")
+    static func feedView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.feedView)
+    }
+    
+    /// `UINib(name: "MovieTableViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.movieTableViewCell) instead")
+    static func movieTableViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.movieTableViewCell)
+    }
+    
+    static func feedView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.feedView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+    
+    static func movieTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MovieTableViewCell? {
+      return R.nib.movieTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MovieTableViewCell
+    }
+    
+    fileprivate init() {}
+  }
+  
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  struct reuseIdentifier {
+    /// Reuse identifier `MovieTableViewCell`.
+    static let movieTableViewCell: Rswift.ReuseIdentifier<MovieTableViewCell> = Rswift.ReuseIdentifier(identifier: "MovieTableViewCell")
+    
+    fileprivate init() {}
+  }
+  
+  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
-    /// Storyboard `Main`.
-    static let main = _R.storyboard.main()
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
-    }
-    
-    /// `UIStoryboard(name: "Main", bundle: ...)`
-    static func main(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.main)
     }
     
     fileprivate init() {}
@@ -54,10 +85,38 @@ struct _R: Rswift.Validatable {
     try storyboard.validate()
   }
   
+  struct nib {
+    struct _FeedView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "FeedView"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _MovieTableViewCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = MovieTableViewCell
+      
+      let bundle = R.hostingBundle
+      let identifier = "MovieTableViewCell"
+      let name = "MovieTableViewCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MovieTableViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MovieTableViewCell
+      }
+      
+      fileprivate init() {}
+    }
+    
+    fileprivate init() {}
+  }
+  
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       try launchScreen.validate()
-      try main.validate()
     }
     
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
@@ -65,20 +124,6 @@ struct _R: Rswift.Validatable {
       
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
-      
-      static func validate() throws {
-        if #available(iOS 11.0, *) {
-        }
-      }
-      
-      fileprivate init() {}
-    }
-    
-    struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = ViewController
-      
-      let bundle = R.hostingBundle
-      let name = "Main"
       
       static func validate() throws {
         if #available(iOS 11.0, *) {

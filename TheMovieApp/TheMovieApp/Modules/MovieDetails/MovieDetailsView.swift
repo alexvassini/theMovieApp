@@ -28,15 +28,16 @@ class MovieDetailsView: UIViewController {
     let imageBaseURL = "https://image.tmdb.org/t/p/w500"
     
     let viewModel: MovieDetailsViewModel!
-    var movie: Movie!
+    let movie: Movie
     
     var headerHeight: CGFloat = 200.0
     var headerMultiplier: CGFloat = 0.2
     
     weak var delegate: AppActionable?
 
-    init(viewModel: MovieDetailsViewModel) {
-        self.viewModel = viewModel
+    init(movie: Movie) {
+        self.movie = movie
+        self.viewModel = MovieDetailsViewModel()
         super.init(nibName: String(describing: MovieDetailsView.self), bundle: nil)
     }
     
@@ -44,15 +45,11 @@ class MovieDetailsView: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupParalaxHeader()
-        self.configureViews()
-        self.setupBindings()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupParalaxHeader()
+        configureViews()
+        setupBindings()
     }
     
 }
@@ -65,7 +62,6 @@ extension MovieDetailsView {
         scrollView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
         scrollView.contentOffset.y = -(headerHeight)
     }
-    
     
     func configureViews() {
         
@@ -85,6 +81,7 @@ extension MovieDetailsView {
     func setupBindings() {
 
         viewModel.overview
+            .debug("overview")
             .drive(overviewLabel.rx.text)
             .disposed(by: rx.disposeBag)
         
@@ -98,7 +95,7 @@ extension MovieDetailsView {
             .drive(producerView.rx.isHidden)
             .disposed(by: rx.disposeBag)
         
-         viewModel.movie.onNext(self.movie)
+        viewModel.movie.onNext(self.movie)
     }
 }
 

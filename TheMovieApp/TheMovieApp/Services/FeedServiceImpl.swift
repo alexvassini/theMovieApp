@@ -16,10 +16,9 @@ class FeedServiceImpl: NSObject, FeedService {
 
     let provider: MoyaProvider<FeedRouter>
     
-    init(provider: MoyaProvider<FeedRouter>) {
+    init(provider: MoyaProvider<FeedRouter> = MoyaProvider<FeedRouter>(plugins: [NetworkLoggerPlugin(verbose: true)])) {
         self.provider = provider
         super.init()
-        
     }
     
     func getMovieDetails(movieId: Int) -> Single<Response> {

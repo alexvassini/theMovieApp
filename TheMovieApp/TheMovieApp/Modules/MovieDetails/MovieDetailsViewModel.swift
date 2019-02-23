@@ -18,7 +18,7 @@ class MovieDetailsViewModel {
     
     let movie: PublishSubject<Movie> = PublishSubject()
     
-    init(repository: FeedRepository) {
+    init(repository: FeedRepository = FeedRepositoryImpl()) {
         
         let result = movie.flatMapLatest { (movie) in
             repository.getMovieDetails(movie.id)
@@ -38,11 +38,15 @@ class MovieDetailsViewModel {
         
         self.overview = movieDetails
             .map{$0.overview}
+            .unwrap()
             .asDriver(onErrorJustReturn: "")
+        .debug("Overview ->>>")
         
         self.reviews = movieDetails
             .map{$0.reviews.results}
             .asDriver(onErrorJustReturn:[])
+        
+        
         
     }
     

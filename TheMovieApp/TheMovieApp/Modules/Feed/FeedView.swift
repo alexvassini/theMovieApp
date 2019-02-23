@@ -18,7 +18,7 @@ class FeedView: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    init(viewModel: FeedViewModel) {
+    init(viewModel: FeedViewModel = .init()) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: FeedView.self), bundle: nil)
     }

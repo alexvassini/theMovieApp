@@ -28,7 +28,6 @@
 		5E48ED8C221F8E820096F432 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E48ED8A221F8E820096F432 /* MovieTableViewCell.xib */; };
 		5E48ED8F221F96150096F432 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED8E221F96150096F432 /* Coordinator.swift */; };
 		5E48ED91221F96460096F432 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED90221F96460096F432 /* AppCoordinator.swift */; };
-		5E48ED94221F97CF0096F432 /* DefaultContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED93221F97CF0096F432 /* DefaultContainer.swift */; };
 		5E48ED98221F99100096F432 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED95221F99100096F432 /* FeedView.swift */; };
 		5E48ED99221F99100096F432 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED96221F99100096F432 /* FeedViewModel.swift */; };
 		5E48ED9A221F99100096F432 /* FeedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E48ED97221F99100096F432 /* FeedView.xib */; };
@@ -85,7 +84,6 @@
 		5E48ED8A221F8E820096F432 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		5E48ED8E221F96150096F432 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5E48ED90221F96460096F432 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		5E48ED93221F97CF0096F432 /* DefaultContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultContainer.swift; sourceTree = "<group>"; };
 		5E48ED95221F99100096F432 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		5E48ED96221F99100096F432 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		5E48ED97221F99100096F432 /* FeedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedView.xib; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 		5E0A5E97221E299B005C1566 /* TheMovieApp */ = {
 			isa = PBXGroup;
 			children = (
-				5E48ED92221F97B80096F432 /* Container */,
 				5E48ED8D221F96020096F432 /* Coordinator */,
 				5E48ED88221F8E540096F432 /* Cells */,
 				5E0A5EC6221E2EEA005C1566 /* Modules */,
@@ -297,14 +294,6 @@
 				5E48ED90221F96460096F432 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		5E48ED92221F97B80096F432 /* Container */ = {
-			isa = PBXGroup;
-			children = (
-				5E48ED93221F97CF0096F432 /* DefaultContainer.swift */,
-			);
-			path = Container;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,7 +466,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -524,7 +513,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwiftUtilities/RxSwiftUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -541,7 +529,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,7 +568,6 @@
 				5E0A5ECF221E32D3005C1566 /* FeedRouter.swift in Sources */,
 				5E209EB32220B93500BDED06 /* Rx + Utils.swift in Sources */,
 				5E48ED91221F96460096F432 /* AppCoordinator.swift in Sources */,
-				5E48ED94221F97CF0096F432 /* DefaultContainer.swift in Sources */,
 				5E0A5ED6221E3BDB005C1566 /* FeedRepositoryImpl.swift in Sources */,
 				5E0A5ED1221E32E1005C1566 /* FeedService.swift in Sources */,
 				5E0A5ED7221E3BDB005C1566 /* FeedRepository.swift in Sources */,

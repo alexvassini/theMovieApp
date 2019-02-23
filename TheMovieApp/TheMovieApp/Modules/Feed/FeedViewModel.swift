@@ -19,14 +19,13 @@ class FeedViewModel {
     let results: Driver<[Movie]>
     let requestTrigger: PublishSubject<Void> = PublishSubject()
     
-    init(repository: FeedRepository ) {
+    init(repository: FeedRepository = FeedRepositoryImpl()) {
         
         self.repository = repository
         
         let response = requestTrigger
             .flatMapLatest { _ in
             repository.getMovieList()
-                .debug("->>>>>>>")
         }.materialize()
         
         self.results = response

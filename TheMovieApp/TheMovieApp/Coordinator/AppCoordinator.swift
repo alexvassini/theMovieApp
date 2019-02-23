@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Swinject
+import UIKit
 
 enum AppAction {
     
@@ -23,14 +23,11 @@ class AppCoordinator: Coordinator {
     
     // MARK: - Properties
     let window: UIWindow
-    let container: Container
     var navigationController: UINavigationController
     // MARK: - Coordinator
-    init(window: UIWindow, container: Container) {
+    init(window: UIWindow) {
         self.window = window
-        self.container = container
         self.navigationController = UINavigationController()
-        self.navigationController.navigationBar.backItem?.title = ""
     }
     
     var currentView: UIViewController? {
@@ -50,16 +47,16 @@ class AppCoordinator: Coordinator {
     }
     
     fileprivate func showFeed(){
-        let homeView = container.resolve(FeedView.self)!
+        let homeView = FeedView()
         self.navigationController.setViewControllers([homeView], animated: false)
         homeView.delegate = self
         self.currentView = navigationController
     }
     
     fileprivate func showMovieDetails(_ movie: Movie){
-        let view = container.resolve(MovieDetailsView.self)!
+        let view = MovieDetailsView(movie: movie)
         view.delegate = self
-        view.movie = movie
+        //view.movie = movie
         self.navigationController.pushViewController(view, animated: true)
     }
 

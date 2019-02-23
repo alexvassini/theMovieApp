@@ -14,7 +14,7 @@ class FeedRepositoryImpl: FeedRepository {
     
     let service: FeedService
     
-    init(service: FeedService) {
+    init(service: FeedService = FeedServiceImpl()) {
         self.service = service
     }
     
@@ -25,7 +25,7 @@ class FeedRepositoryImpl: FeedRepository {
     }
     
     func getMovieDetails(_ movieId: Int) -> Single<MovieDetails> {
-        return self.service.getMovieDetails(movieId: movieId).map(MovieDetails.self)
+        return self.service.getMovieDetails(movieId: movieId).debug("repository").map(MovieDetails.self)
     }
     
 }

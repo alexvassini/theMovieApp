@@ -12,14 +12,14 @@ import Foundation
 
 struct MovieDetails: Codable {
     let adult: Bool
-    let backdropPath: String
     let budget: Int
     let genres: [Genre]
-    let homepage: String
+    let homepage: String?
     let id: Int
-    let imdbID, originalLanguage, originalTitle, overview: String
+    let imdbID: String?
+    let originalLanguage, originalTitle: String
+    let overview: String?
     let popularity: Double
-    let posterPath: String
     let productionCompanies: [ProductionCompany]
     let productionCountries: [ProductionCountry]
     let releaseDate: String
@@ -34,13 +34,11 @@ struct MovieDetails: Codable {
 
     enum CodingKeys: String, CodingKey {
         case adult
-        case backdropPath = "backdrop_path"
         case budget, genres, homepage, id
         case imdbID = "imdb_id"
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
         case overview, popularity
-        case posterPath = "poster_path"
         case productionCompanies = "production_companies"
         case productionCountries = "production_countries"
         case releaseDate = "release_date"
@@ -94,7 +92,7 @@ struct Genre: Codable {
 
 struct ProductionCompany: Codable {
     let id: Int
-    let logoPath, name, originCountry: String
+    let logoPath, name, originCountry: String?
     
     enum CodingKeys: String, CodingKey {
         case id

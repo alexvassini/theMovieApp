@@ -19,6 +19,11 @@ class MovieDetailsView: UIViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var directorView: UIView!
+    @IBOutlet weak var producerView: UIView!
+    @IBOutlet weak var directorName: UILabel!
+    @IBOutlet weak var producerLabel: UILabel!
+    @IBOutlet weak var overviewLabel: UILabel!
     
     let imageBaseURL = "https://image.tmdb.org/t/p/w500"
     
@@ -44,6 +49,10 @@ class MovieDetailsView: UIViewController {
         setupParalaxHeader()
         self.configureViews()
         self.setupBindings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
 }
@@ -75,6 +84,21 @@ extension MovieDetailsView {
     
     func setupBindings() {
 
+        viewModel.overview
+            .drive(overviewLabel.rx.text)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.director
+            .map{$0.isEmpty}
+            .drive(directorView.rx.isHidden)
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.producer
+            .map{$0.isEmpty}
+            .drive(producerView.rx.isHidden)
+            .disposed(by: rx.disposeBag)
+        
+         viewModel.movie.onNext(self.movie)
     }
 }
 
@@ -85,8 +109,6 @@ extension MovieDetailsView: UIScrollViewDelegate {
         let offset = scrollView.contentOffset.y + headerHeight
         if offset < headerHeight {
             headerHeightConstraint.constant = headerHeight - offset
-//            titleBar.alpha = offset / (headerHeight - titleBar.frame.height)
-//            imageTitleBar.alpha = 1 - offset / (headerHeight - titleBar.frame.height)
         }
         self.view.layoutIfNeeded()
     }

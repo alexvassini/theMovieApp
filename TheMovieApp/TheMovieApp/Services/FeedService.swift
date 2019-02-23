@@ -1,21 +1,19 @@
 //
-//  MoviesRepositoryImpl.swift
+//  MoviesService.swift
 //  TheMovieApp
 //
 //  Created by Alexandre Vassinievski Ribeiro on 20/02/19.
 //  Copyright © 2019 Alexandre Vassinievski Ribeiro. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Moya
 import RxSwift
 
-class MoviesRepositoryImpl: MoviesRepository {
+protocol FeedService {
     
-    let service: MoviesService
+    func getMovieDetails(movieId: Int) -> Single<Response>
     
-    init(service: MoviesService) {
-        self.service = service
-    }
+    func getPopularMovieList(page: Int) -> Single<Response>
     
 }

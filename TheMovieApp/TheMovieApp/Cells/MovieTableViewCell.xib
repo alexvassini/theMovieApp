@@ -72,6 +72,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="movieImage" destination="c6l-h4-I7J" id="OX2-JA-zqc"/>
+                <outlet property="movieNameLabel" destination="GVd-Ma-pvk" id="y9P-zh-yzH"/>
+                <outlet property="rattingLabel" destination="4We-dG-9F9" id="LgV-vg-yiQ"/>
+                <outlet property="releaseDateLabel" destination="8Gb-SM-TMw" id="2Ed-Kd-z5x"/>
+            </connections>
             <point key="canvasLocation" x="13.6" y="-6.746626686656672"/>
         </tableViewCell>
     </objects>

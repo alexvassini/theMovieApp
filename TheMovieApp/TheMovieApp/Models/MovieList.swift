@@ -20,8 +20,10 @@ struct MovieList: Codable {
         case page
         case totalResults = "total_results"
         case totalPages = "total_pages"
-        case movies = "result"
+        case movies = "results"
     }
+    
+
 }
 
 struct Movie: Codable {

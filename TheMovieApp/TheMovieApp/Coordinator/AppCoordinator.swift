@@ -11,7 +11,7 @@ import Swinject
 
 enum AppAction {
     
-    case cancell
+    case showMovieDetails(_ movie: Movie)
     
 }
 
@@ -30,6 +30,7 @@ class AppCoordinator: Coordinator {
         self.window = window
         self.container = container
         self.navigationController = UINavigationController()
+        self.navigationController.navigationBar.backItem?.title = ""
     }
     
     var currentView: UIViewController? {
@@ -55,8 +56,11 @@ class AppCoordinator: Coordinator {
         self.currentView = navigationController
     }
     
-    fileprivate func showMovieDetail(){
-        
+    fileprivate func showMovieDetails(_ movie: Movie){
+        let view = container.resolve(MovieDetailsView.self)!
+        view.delegate = self
+        view.movie = movie
+        self.navigationController.pushViewController(view, animated: true)
     }
 
 }
@@ -64,7 +68,13 @@ class AppCoordinator: Coordinator {
 extension AppCoordinator: AppActionable {
     
     func handle(_ action: AppAction) {
-     
+        
+        switch action {
+            
+        case .showMovieDetails(let movie):
+            showMovieDetails(movie)
+            
+        }
     }
-
+    
 }

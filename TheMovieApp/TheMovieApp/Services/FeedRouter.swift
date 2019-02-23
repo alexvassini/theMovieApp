@@ -9,12 +9,12 @@
 import Foundation
 import Moya
 
-enum MoviesRouter {
+enum FeedRouter {
     case getMovieDetails(movieId: Int)
     case getPopularMovieList(page: Int)
 }
 
-extension MoviesRouter: TargetType {
+extension FeedRouter: TargetType {
     
     var baseURL: URL {
         return URL(string: "https://api.themoviedb.org/3/movie")!

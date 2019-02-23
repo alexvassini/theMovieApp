@@ -9,12 +9,12 @@
 import RxSwift
 import Moya
 
-//self.register(MoviesRepository.self) { resolver in
-//    MoviesRepositoryImpl(
-//        service: resolver.resolve(<#ServiceName#>.self)!
-//    )
-//}
 
-protocol MoviesRepository: class {
+protocol FeedRepository: class {
+    
+    func getMovieList() -> Single<[Movie]>
+    
+    func getMovieDetails(_ movieId: Int) -> Single<MovieDetails>
+    
     
 }

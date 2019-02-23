@@ -12,11 +12,11 @@ import RxSwift
 import Moya
 
 
-class MoviesServiceImpl: NSObject, MoviesService {
+class FeedServiceImpl: NSObject, FeedService {
 
-    let provider: MoyaProvider<MoviesRouter>
+    let provider: MoyaProvider<FeedRouter>
     
-    init(provider: MoyaProvider<MoviesRouter>) {
+    init(provider: MoyaProvider<FeedRouter>) {
         self.provider = provider
         super.init()
         

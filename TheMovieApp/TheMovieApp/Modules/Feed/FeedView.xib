@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedView" customModule="TheMovieApp" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="NB0-sL-AbV" id="fza-TX-hMb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,8 +20,21 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.1215686275" green="0.56862745100000001" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NB0-sL-AbV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="NB0-sL-AbV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Eru-WJ-fGd"/>
+                <constraint firstItem="NB0-sL-AbV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GQW-c9-11O"/>
+                <constraint firstItem="NB0-sL-AbV" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="gjD-Cl-1E1"/>
+                <constraint firstItem="NB0-sL-AbV" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="rio-El-8K4"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="130.40000000000001" y="153.37331334332833"/>
         </view>
     </objects>
 </document>

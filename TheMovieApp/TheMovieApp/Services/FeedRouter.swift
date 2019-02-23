@@ -52,12 +52,12 @@ extension FeedRouter: TargetType {
     var parameters: [String: Any]? {
         switch self {
         case .getMovieDetails:
-            return ["api_key": "432c9de63acf48d4822a16019607fd34"]
+            return ["api_key" : "432c9de63acf48d4822a16019607fd34",
+                    "append_to_response" : "credits,reviews"]
         case .getPopularMovieList(let page):
             return ["api_key": "432c9de63acf48d4822a16019607fd34",
                     "language": "en-US",
                     "page": page]
-            
         }
     }
     
@@ -65,7 +65,6 @@ extension FeedRouter: TargetType {
         return nil
     }
 }
-
 
 func jsonSerializedUTF8(json: [String: Any]) -> Data {
     do {

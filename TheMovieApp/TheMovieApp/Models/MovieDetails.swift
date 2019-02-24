@@ -23,9 +23,9 @@ struct MovieDetails: Codable {
     let productionCompanies: [ProductionCompany]
     let productionCountries: [ProductionCountry]
     let releaseDate: String
-    let revenue, runtime: Int
+    let revenue: Int
     let spokenLanguages: [SpokenLanguage]
-    let status, tagline, title: String
+    let status, title: String
     let video: Bool
     let voteAverage: Double
     let voteCount: Int
@@ -42,9 +42,9 @@ struct MovieDetails: Codable {
         case productionCompanies = "production_companies"
         case productionCountries = "production_countries"
         case releaseDate = "release_date"
-        case revenue, runtime
+        case revenue
         case spokenLanguages = "spoken_languages"
-        case status, tagline, title, video
+        case status, title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case credits, reviews
@@ -135,4 +135,11 @@ struct Reviews: Codable {
 struct Review: Codable {
     let author, content, id: String
     let url: String
+    
+    init() {
+        author = ""
+        content = ""
+        id = ""
+        url = ""
+    }
 }

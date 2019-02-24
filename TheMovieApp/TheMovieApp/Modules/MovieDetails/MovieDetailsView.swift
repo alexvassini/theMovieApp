@@ -24,6 +24,8 @@ class MovieDetailsView: UIViewController {
     @IBOutlet weak var directorName: UILabel!
     @IBOutlet weak var producerLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var reviewsStackView: UIStackView!
+    @IBOutlet weak var reviewScrollView: UIScrollView!
     
     let imageBaseURL = "https://image.tmdb.org/t/p/w500"
     
@@ -75,6 +77,8 @@ extension MovieDetailsView {
         
         movieNameLabel.text = movie.originalTitle
         releaseDateLabel.text = movie.releaseDate
+        
+        overviewLabel.text = movie.overview
   
     }
     
@@ -95,7 +99,20 @@ extension MovieDetailsView {
             .drive(producerView.rx.isHidden)
             .disposed(by: rx.disposeBag)
         
+        viewModel.reviews.drive(onNext: { [unowned self] reviews in
+            self.createReviewCards(reviews)
+        }).disposed(by: rx.disposeBag)
+        
         viewModel.movie.onNext(self.movie)
+    }
+    
+    func createReviewCards(_ reviews: [Review]){
+        for review in reviews {
+            let view = ReviewCardView(review)
+            self.reviewsStackView.addArrangedSubview(view)
+            view.prepareForConstraints()
+            view.widthAnchor.constraint(equalTo: reviewScrollView.widthAnchor, multiplier: 0.90).isActive = true
+        }
     }
 }
 

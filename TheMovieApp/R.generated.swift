@@ -16,7 +16,7 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
     /// Nib `FeedView`.
     static let feedView = _R.nib._FeedView()
@@ -24,6 +24,8 @@ struct R: Rswift.Validatable {
     static let movieDetailsView = _R.nib._MovieDetailsView()
     /// Nib `MovieTableViewCell`.
     static let movieTableViewCell = _R.nib._MovieTableViewCell()
+    /// Nib `ReviewCardView`.
+    static let reviewCardView = _R.nib._ReviewCardView()
     
     /// `UINib(name: "FeedView", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.feedView) instead")
@@ -43,6 +45,12 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.movieTableViewCell)
     }
     
+    /// `UINib(name: "ReviewCardView", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.reviewCardView) instead")
+    static func reviewCardView(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.reviewCardView)
+    }
+    
     static func feedView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.feedView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -53,6 +61,10 @@ struct R: Rswift.Validatable {
     
     static func movieTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MovieTableViewCell? {
       return R.nib.movieTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MovieTableViewCell
+    }
+    
+    static func reviewCardView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.reviewCardView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
     fileprivate init() {}
@@ -129,6 +141,17 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MovieTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MovieTableViewCell
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ReviewCardView: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ReviewCardView"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
       }
       
       fileprivate init() {}

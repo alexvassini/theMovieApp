@@ -16,6 +16,8 @@ class MovieDetailsViewModel {
     let overview: Driver<String>
     let reviews: Driver<[Review]>
     
+    @IBOutlet weak var reviewsStack: UIStackView!
+    
     let movie: PublishSubject<Movie> = PublishSubject()
     
     init(repository: FeedRepository = FeedRepositoryImpl()) {
@@ -45,9 +47,7 @@ class MovieDetailsViewModel {
         self.reviews = movieDetails
             .map{$0.reviews.results}
             .asDriver(onErrorJustReturn:[])
-        
-        
-        
+
     }
     
     

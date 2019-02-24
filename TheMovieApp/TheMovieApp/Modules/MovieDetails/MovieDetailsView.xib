@@ -22,6 +22,7 @@
                 <outlet property="producerLabel" destination="A1d-xo-svC" id="Wsa-gB-31b"/>
                 <outlet property="producerView" destination="sfE-KJ-gAQ" id="vVL-oD-3Cq"/>
                 <outlet property="releaseDateLabel" destination="dyI-B5-DJO" id="Lv6-9E-Zha"/>
+                <outlet property="reviewContainer" destination="c3k-32-egJ" id="U21-fU-BDs"/>
                 <outlet property="reviewScrollView" destination="ZHe-jn-Qws" id="khZ-ry-d5I"/>
                 <outlet property="reviewsStackView" destination="mkh-JI-QcE" id="wtE-qM-QI5"/>
                 <outlet property="scrollView" destination="FrT-XN-I2Z" id="5Kr-RB-NU6"/>

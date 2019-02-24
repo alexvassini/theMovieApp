@@ -13,6 +13,7 @@ import RxCocoa
 class FeedView: UIViewController {
     
     let viewModel: FeedViewModel
+    let loadingView = LoadingView()
     
     weak var delegate: AppActionable?
     
@@ -45,12 +46,16 @@ extension FeedView {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        
+       
+        self.view.addSubview(self.loadingView)
+        self.loadingView.prepareForConstraints()
+        self.loadingView.pinEdgesToSuperview()
     }
     
     @objc func refresh(_ refreshControl: UIRefreshControl) {
         
-         self.viewModel.requestTrigger.onNext( () )
+         //self.viewModel.requestTrigger.onNext( () )
+        //self.loadingView.show()
         //Request new data
         // Do your job, when done:
         refreshControl.endRefreshing()
@@ -58,9 +63,9 @@ extension FeedView {
     
     func setupBindings() {
         
-//        viewModel.isLoading
-//            .drive(self.rx.isLoading)
-//            .disposed(by: rx.disposeBag)
+        viewModel.isLoading.drive(onNext: { (isLoading) in
+            self.loadingAnimation(isLoading)
+        }).disposed(by: rx.disposeBag)
 
         self.viewModel.results
             .drive(tableView.rx
@@ -71,11 +76,18 @@ extension FeedView {
         
         self.tableView.rx
             .modelSelected(Movie.self)
-            .subscribe(onNext: { (movie) in
+            .subscribe(onNext: { [unowned self ] (movie) in
                 self.delegate?.handle(.showMovieDetails(movie))
             }).disposed(by: rx.disposeBag)
         
         self.viewModel.requestTrigger.onNext( () )
+        
+    }
+    
+    func loadingAnimation(_ isLoading: Bool){
+        DispatchQueue.main.async {
+            isLoading ? self.loadingView.show() : self.loadingView.hide()
+        }
         
     }
     

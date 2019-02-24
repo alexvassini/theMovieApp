@@ -17,21 +17,29 @@ class FeedViewModel {
     let repository: FeedRepository
     
     let results: Driver<[Movie]>
+    let isLoading: Driver<Bool>
     let requestTrigger: PublishSubject<Void> = PublishSubject()
     
     init(repository: FeedRepository = FeedRepositoryImpl()) {
         
         self.repository = repository
         
+       let loadingIndicator = ActivityIndicator()
+        
+        self.isLoading = loadingIndicator
+            .startWith(false)
+            .asDriver()
+        
         let response = requestTrigger
             .flatMapLatest { _ in
-            repository.getMovieList()
-        }.materialize()
+                repository.getMovieList()
+                .trackActivity(loadingIndicator)
+            }.materialize()
         
         self.results = response
             .elements()
             .asDriver(onErrorJustReturn: [])
         
     }
-
+    
 }

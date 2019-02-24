@@ -16,6 +16,20 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
+  /// This `R.file` struct is generated, and contains static references to 1 files.
+  struct file {
+    /// Resource file `movie-loading.json`.
+    static let movieLoadingJson = Rswift.FileResource(bundle: R.hostingBundle, name: "movie-loading", pathExtension: "json")
+    
+    /// `bundle.url(forResource: "movie-loading", withExtension: "json")`
+    static func movieLoadingJson(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.movieLoadingJson
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    fileprivate init() {}
+  }
+  
   /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
     /// Nib `FeedView`.

@@ -28,6 +28,8 @@
 		5E209EC6222199B300BDED06 /* ReviewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E209EC4222199B300BDED06 /* ReviewCardView.swift */; };
 		5E209EC7222199B300BDED06 /* ReviewCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E209EC5222199B300BDED06 /* ReviewCardView.xib */; };
 		5E209EC92221A21400BDED06 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E209EC82221A21300BDED06 /* UIView+Constraints.swift */; };
+		5E209ECB2222FB3500BDED06 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E209ECA2222FB3500BDED06 /* LoadingView.swift */; };
+		5E209ECF222307B700BDED06 /* movie-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E209ECE222307B600BDED06 /* movie-loading.json */; };
 		5E48ED8B221F8E820096F432 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED89221F8E820096F432 /* MovieTableViewCell.swift */; };
 		5E48ED8C221F8E820096F432 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E48ED8A221F8E820096F432 /* MovieTableViewCell.xib */; };
 		5E48ED8F221F96150096F432 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED8E221F96150096F432 /* Coordinator.swift */; };
@@ -88,6 +90,8 @@
 		5E209EC4222199B300BDED06 /* ReviewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCardView.swift; sourceTree = "<group>"; };
 		5E209EC5222199B300BDED06 /* ReviewCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCardView.xib; sourceTree = "<group>"; };
 		5E209EC82221A21300BDED06 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		5E209ECA2222FB3500BDED06 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		5E209ECE222307B600BDED06 /* movie-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "movie-loading.json"; sourceTree = "<group>"; };
 		5E48ED89221F8E820096F432 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		5E48ED8A221F8E820096F432 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		5E48ED8E221F96150096F432 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 		5E0A5ED8221E3C03005C1566 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				5E209ECE222307B600BDED06 /* movie-loading.json */,
 				5E0A5EDA221E3D0A005C1566 /* R.generated.swift */,
 				5E0A5E98221E299B005C1566 /* AppDelegate.swift */,
 				5E0A5E9F221E299C005C1566 /* Assets.xcassets */,
@@ -292,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				5E209EBE2221982300BDED06 /* MaterialCardView.swift */,
+				5E209ECA2222FB3500BDED06 /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E209ECF222307B700BDED06 /* movie-loading.json in Resources */,
 				5E209EC7222199B300BDED06 /* ReviewCardView.xib in Resources */,
 				5E48ED9A221F99100096F432 /* FeedView.xib in Resources */,
 				5E0A5EA3221E299C005C1566 /* LaunchScreen.storyboard in Resources */,
@@ -591,6 +598,7 @@
 				5E48ED91221F96460096F432 /* AppCoordinator.swift in Sources */,
 				5E0A5ED6221E3BDB005C1566 /* FeedRepositoryImpl.swift in Sources */,
 				5E0A5ED1221E32E1005C1566 /* FeedService.swift in Sources */,
+				5E209ECB2222FB3500BDED06 /* LoadingView.swift in Sources */,
 				5E209EBF2221982300BDED06 /* MaterialCardView.swift in Sources */,
 				5E0A5ED7221E3BDB005C1566 /* FeedRepository.swift in Sources */,
 				5E209EC92221A21400BDED06 /* UIView+Constraints.swift in Sources */,

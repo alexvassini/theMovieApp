@@ -26,14 +26,18 @@ class MovieDetailsView: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var reviewsStackView: UIStackView!
     @IBOutlet weak var reviewScrollView: UIScrollView!
-    
-    let imageBaseURL = "https://image.tmdb.org/t/p/w500"
+    @IBOutlet weak var reviewContainer: UIView!
+
+    let imageBaseURL = "https://image.tmdb.org/t/p/w1280"
+    let posterBaseURL = "https://image.tmdb.org/t/p/w500"
     
     let viewModel: MovieDetailsViewModel!
     let movie: Movie
     
     var headerHeight: CGFloat = 200.0
     var headerMultiplier: CGFloat = 0.2
+    
+    let loadingView = LoadingView()
     
     weak var delegate: AppActionable?
 
@@ -71,7 +75,7 @@ extension MovieDetailsView {
             backdropPathImage.af_setImage(withURL: backdropPathUrl)
         }
    
-        if let posterUrl = URL(string: (imageBaseURL + movie.posterPath)){
+        if let posterUrl = URL(string: (posterBaseURL + movie.posterPath)){
             posterImage.af_setImage(withURL: posterUrl)
         }
         
@@ -79,21 +83,24 @@ extension MovieDetailsView {
         releaseDateLabel.text = movie.releaseDate
         
         overviewLabel.text = movie.overview
+        
+        reviewContainer.addSubview(loadingView)
+        loadingView.prepareForConstraints()
+        loadingView.pinEdgesToSuperview()
   
     }
     
     func setupBindings() {
-
-        viewModel.overview
-            .debug("overview")
-            .drive(overviewLabel.rx.text)
-            .disposed(by: rx.disposeBag)
         
+        viewModel.isLoading.drive(onNext: { (isLoading) in
+            self.loadingAnimation(isLoading)
+        }).disposed(by: rx.disposeBag)
+
         viewModel.director
             .map{$0.isEmpty}
             .drive(directorView.rx.isHidden)
             .disposed(by: rx.disposeBag)
-        
+
         viewModel.producer
             .map{$0.isEmpty}
             .drive(producerView.rx.isHidden)
@@ -102,6 +109,8 @@ extension MovieDetailsView {
         viewModel.reviews.drive(onNext: { [unowned self] reviews in
             self.createReviewCards(reviews)
         }).disposed(by: rx.disposeBag)
+        
+        
         
         viewModel.movie.onNext(self.movie)
     }
@@ -113,6 +122,13 @@ extension MovieDetailsView {
             view.prepareForConstraints()
             view.widthAnchor.constraint(equalTo: reviewScrollView.widthAnchor, multiplier: 0.90).isActive = true
         }
+    }
+    
+    func loadingAnimation(_ isLoading: Bool){
+        DispatchQueue.main.async {
+             isLoading ? self.loadingView.show() : self.loadingView.hide()
+        }
+       
     }
 }
 

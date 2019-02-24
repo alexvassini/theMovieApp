@@ -16,7 +16,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var rattingLabel: UILabel!
     
-    let imageBaseURL = "https://image.tmdb.org/t/p/w500"
+    let imageBaseURL = "https://image.tmdb.org/t/p/w1280"
     
     override func awakeFromNib() {
         super.awakeFromNib()

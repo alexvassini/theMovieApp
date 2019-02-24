@@ -8,6 +8,8 @@
 
 import RxSwift
 import RxCocoa
+import RxSwiftExt
+import RxSwiftUtilities
 
 class MovieDetailsViewModel {
     
@@ -15,12 +17,17 @@ class MovieDetailsViewModel {
     let producer: Driver<[Crew]>
     let overview: Driver<String>
     let reviews: Driver<[Review]>
-    
-    @IBOutlet weak var reviewsStack: UIStackView!
+    let isLoading: Driver<Bool>
     
     let movie: PublishSubject<Movie> = PublishSubject()
     
     init(repository: FeedRepository = FeedRepositoryImpl()) {
+        
+        let loadingIndicator = ActivityIndicator()
+        
+        self.isLoading = loadingIndicator
+            .startWith(false)
+            .asDriver()
         
         let result = movie.flatMapLatest { (movie) in
             repository.getMovieDetails(movie.id)

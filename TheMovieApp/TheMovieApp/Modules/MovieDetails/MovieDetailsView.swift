@@ -128,7 +128,6 @@ extension MovieDetailsView {
         DispatchQueue.main.async {
              isLoading ? self.loadingView.show() : self.loadingView.hide()
         }
-       
     }
 }
 

@@ -10,19 +10,23 @@ import RxSwift
 import RxCocoa
 import RxSwiftExt
 import RxSwiftUtilities
+import Moya
 
 class MovieDetailsViewModel {
     
     let director: Driver<[Crew]>
     let producer: Driver<[Crew]>
-    let overview: Driver<String>
     let reviews: Driver<[Review]>
+    let error: Observable<RequestError?>
     let isLoading: Driver<Bool>
+    let repository: FeedRepository
     
     let movie: PublishSubject<Movie> = PublishSubject()
     
     init(repository: FeedRepository = FeedRepositoryImpl()) {
         
+        self.repository = repository
+    
         let loadingIndicator = ActivityIndicator()
         
         self.isLoading = loadingIndicator
@@ -37,25 +41,28 @@ class MovieDetailsViewModel {
         
         self.director = movieDetails
             .map{$0.credits.crew}
-            .filter{$0.contains{$0.job == "Director"}}
+            .map{$0.filter{$0.job == "Director"}}
             .asDriver(onErrorJustReturn: [])
         
         self.producer = movieDetails
             .map{$0.credits.crew}
-            .filter{$0.contains{$0.job == "Producer"}}
+             .map{$0.filter{$0.job == "Producer"}}
             .asDriver(onErrorJustReturn: [])
-        
-        self.overview = movieDetails
-            .map{$0.overview}
-            .unwrap()
-            .asDriver(onErrorJustReturn: "")
-        .debug("Overview ->>>")
         
         self.reviews = movieDetails
             .map{$0.reviews.results}
             .asDriver(onErrorJustReturn:[])
-
+        
+       self.error  = result
+            .errors()
+            .map { $0 as? MoyaError }
+            .unwrap()
+            .mapError(RequestError.self)
+    
     }
-    
-    
+
 }
+
+
+
+

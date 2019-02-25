@@ -49,11 +49,41 @@ struct MovieDetails: Codable {
         case voteCount = "vote_count"
         case credits, reviews
     }
+    
+    init(credits: Credits, reviews: Reviews) {
+        adult = false
+        budget = 0
+        genres = []
+        homepage = ""
+        id = 0
+        imdbID = ""
+        originalLanguage = ""
+        originalTitle = ""
+        overview = ""
+        popularity = 0
+        productionCompanies = []
+        productionCountries = []
+        revenue = 0
+        releaseDate = ""
+        spokenLanguages = []
+        status = ""
+        title = ""
+        video = false
+        voteAverage = 0
+        voteCount = 0
+        self.credits = credits
+        self.reviews = reviews
+    }
 }
 
 struct Credits: Codable {
     let cast: [Cast]
     let crew: [Crew]
+    
+    init(crew: [Crew]) {
+        cast = []
+        self.crew = crew
+    }
 }
 
 struct Cast: Codable {
@@ -83,6 +113,16 @@ struct Crew: Codable {
         case creditID = "credit_id"
         case department, gender, id, job, name
         case profilePath = "profile_path"
+    }
+    
+    init(job: String, name: String){
+        creditID = ""
+        department = ""
+        gender = 0
+        id = 0
+        self.job = job
+        self.name = name
+        profilePath = ""
     }
 }
 struct Genre: Codable {
@@ -130,6 +170,12 @@ struct Reviews: Codable {
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
+    init(reviews: [Review]) {
+        page = 0
+        results = reviews
+        totalPages = 0
+        totalResults = 0
+    }
 }
 
 struct Review: Codable {
@@ -139,6 +185,12 @@ struct Review: Codable {
     init() {
         author = ""
         content = ""
+        id = ""
+        url = ""
+    }
+    init(author: String, content: String) {
+        self.author = author
+        self.content = content
         id = ""
         url = ""
     }

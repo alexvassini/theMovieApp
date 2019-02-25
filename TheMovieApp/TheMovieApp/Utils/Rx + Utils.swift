@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Moya
 import ObjectiveC
 
 private var disposeBagContext: UInt8 = 0
@@ -43,3 +44,21 @@ public extension Reactive where Base: Any {
         }
     }
 }
+
+extension Observable where Element: Error {
+    
+    func mapError<T: Decodable>(_ type: T.Type) -> Observable<T?> {
+        
+        return self.map { error in
+            if let errorResponse = error as? MoyaError,
+                let data = errorResponse.response?.data {
+                let result = try? JSONDecoder().decode(type, from: data)
+                return result
+            } else {
+                return nil
+            }
+        }
+    }
+    
+}
+

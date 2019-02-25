@@ -7,28 +7,74 @@
 //
 
 import XCTest
+import RxSwift
+import Nimble
 @testable import TheMovieApp
 
 class TheMovieAppTests: XCTestCase {
+    
+    var repository: FeedRepositoryMock!
+    var viewModel: MovieDetailsViewModel!
+    
+    var disposeBag: DisposeBag!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        repository = FeedRepositoryMock()
+        viewModel = MovieDetailsViewModel(repository: repository)
+        disposeBag = DisposeBag()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        repository = nil
+        viewModel = nil
+        disposeBag = nil
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_isGetMovieDetails_beingInvoked_OneTime() {
+        
+        viewModel.reviews.drive(onNext: { _ in
+            
+        }).disposed(by: self.disposeBag)
+        
+        viewModel.director.drive(onNext: { _ in
+            
+        }).disposed(by: self.disposeBag)
+        
+        viewModel.movie.onNext(MockData.movie)
+        
+        expect(self.repository.getMovieDetailsInvokedCount).toEventually(be(1))
+        
     }
+    
+    func test_hasFiltered_AllDirectors_fromResults() {
+       
+        viewModel.director.drive(onNext: { directors in
+            expect(directors).to(haveCount(2))
+        }).disposed(by: self.disposeBag)
+        
+        viewModel.movie.onNext(MockData.movie)
+    }
+    
+    func test_hasFiltered_AllDProducers_fromResults() {
+        
+        viewModel.producer.drive(onNext: { producers in
+            expect(producers).to(haveCount(2))
+        }).disposed(by: self.disposeBag)
+        
+        viewModel.movie.onNext(MockData.movie)
+    }
+    
+    func test_isGetMovieDetails_returnError() {
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        repository.getMovieDetailsSuccess = false
+        
+        viewModel.error.subscribe(onNext: { (error) in
+            expect(error).notTo(beNil())
+        }).disposed(by: self.disposeBag)
+        
     }
+    
+    
+
 
 }

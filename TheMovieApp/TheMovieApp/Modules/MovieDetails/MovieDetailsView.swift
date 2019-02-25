@@ -38,6 +38,7 @@ class MovieDetailsView: UIViewController {
     var headerMultiplier: CGFloat = 0.2
     
     let loadingView = LoadingView()
+    let emptyStateView = EmptyStateView()
     
     weak var delegate: AppActionable?
 
@@ -87,6 +88,11 @@ extension MovieDetailsView {
         reviewContainer.addSubview(loadingView)
         loadingView.prepareForConstraints()
         loadingView.pinEdgesToSuperview()
+        
+        reviewContainer.addSubview(emptyStateView)
+        emptyStateView.prepareForConstraints()
+        emptyStateView.pinEdgesToSuperview()
+        
   
     }
     
@@ -107,6 +113,12 @@ extension MovieDetailsView {
             .disposed(by: rx.disposeBag)
         
         viewModel.reviews.drive(onNext: { [unowned self] reviews in
+            if reviews.isEmpty {
+                 DispatchQueue.main.async {
+                    self.emptyStateView.show()
+                }
+            }
+            else{self.emptyStateView.hide()}
             self.createReviewCards(reviews)
         }).disposed(by: rx.disposeBag)
         

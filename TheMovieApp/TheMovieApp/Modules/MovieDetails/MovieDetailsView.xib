@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,13 +9,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsView" customModule="TheMovieApp" customModuleProvider="target">
             <connections>
                 <outlet property="backdropPathImage" destination="fdK-q6-2wd" id="Ek9-BF-RTM"/>
-                <outlet property="directorName" destination="ihe-57-bX2" id="lPz-rM-w9V"/>
+                <outlet property="directorNameLabel" destination="ihe-57-bX2" id="lPz-rM-w9V"/>
                 <outlet property="directorView" destination="KvD-mw-1go" id="ZgI-dY-Heo"/>
                 <outlet property="headerHeightConstraint" destination="3Rn-2Y-sSr" id="PAW-zq-Er2"/>
                 <outlet property="movieNameLabel" destination="5Pd-Vr-ZUE" id="pr2-dG-LNz"/>
                 <outlet property="overviewLabel" destination="a1V-0j-Cdh" id="EBw-5M-42j"/>
                 <outlet property="posterImage" destination="Fr0-yo-TfL" id="eVo-ck-hub"/>
-                <outlet property="producerLabel" destination="A1d-xo-svC" id="Wsa-gB-31b"/>
+                <outlet property="producerNameLabel" destination="A1d-xo-svC" id="Wsa-gB-31b"/>
                 <outlet property="producerView" destination="sfE-KJ-gAQ" id="vVL-oD-3Cq"/>
                 <outlet property="releaseDateLabel" destination="dyI-B5-DJO" id="Lv6-9E-Zha"/>
                 <outlet property="reviewContainer" destination="c3k-32-egJ" id="U21-fU-BDs"/>

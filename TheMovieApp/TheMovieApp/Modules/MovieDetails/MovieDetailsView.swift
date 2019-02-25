@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
 class MovieDetailsView: UIViewController {
     
     @IBOutlet weak var backdropPathImage: UIImageView!
@@ -21,8 +20,8 @@ class MovieDetailsView: UIViewController {
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var directorView: UIView!
     @IBOutlet weak var producerView: UIView!
-    @IBOutlet weak var directorName: UILabel!
-    @IBOutlet weak var producerLabel: UILabel!
+    @IBOutlet weak var directorNameLabel: UILabel!
+    @IBOutlet weak var producerNameLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var reviewsStackView: UIStackView!
     @IBOutlet weak var reviewScrollView: UIScrollView!
@@ -106,11 +105,20 @@ extension MovieDetailsView {
             .map{$0.isEmpty}
             .drive(directorView.rx.isHidden)
             .disposed(by: rx.disposeBag)
-
+        
+        viewModel.director.drive(onNext: { [unowned self](directors) in
+            self.directorNameLabel.text = directors.joined(separator: ", ")
+        }).disposed(by: rx.disposeBag)
+        
         viewModel.producer
             .map{$0.isEmpty}
             .drive(producerView.rx.isHidden)
             .disposed(by: rx.disposeBag)
+        
+        viewModel.producer.drive(onNext: { [unowned self](producers) in
+            self.producerNameLabel.text = producers.joined(separator: ", ")
+        }).disposed(by: rx.disposeBag)
+        
         
         viewModel.reviews.drive(onNext: { [unowned self] reviews in
             if reviews.isEmpty {

@@ -14,8 +14,8 @@ import Moya
 
 class MovieDetailsViewModel {
     
-    let director: Driver<[Crew]>
-    let producer: Driver<[Crew]>
+    let director: Driver<[String]>
+    let producer: Driver<[String]>
     let reviews: Driver<[Review]>
     let error: Observable<RequestError?>
     let isLoading: Driver<Bool>
@@ -42,11 +42,13 @@ class MovieDetailsViewModel {
         self.director = movieDetails
             .map{$0.credits.crew}
             .map{$0.filter{$0.job == "Director"}}
+            .map{$0.map{$0.name}}
             .asDriver(onErrorJustReturn: [])
         
         self.producer = movieDetails
             .map{$0.credits.crew}
-             .map{$0.filter{$0.job == "Producer"}}
+            .map{$0.filter{$0.job == "Producer"}}
+            .map{$0.map{$0.name}}
             .asDriver(onErrorJustReturn: [])
         
         self.reviews = movieDetails

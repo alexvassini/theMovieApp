@@ -38,6 +38,19 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
+  /// This `R.image` struct is generated, and contains static references to 1 images.
+  struct image {
+    /// Image `placeholderImage`.
+    static let placeholderImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "placeholderImage")
+    
+    /// `UIImage(named: "placeholderImage", bundle: ..., traitCollection: ...)`
+    static func placeholderImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.placeholderImage, compatibleWith: traitCollection)
+    }
+    
+    fileprivate init() {}
+  }
+  
   /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
     /// Nib `FeedView`.

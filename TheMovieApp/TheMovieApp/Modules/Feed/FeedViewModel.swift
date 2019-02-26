@@ -30,15 +30,23 @@ class FeedViewModel {
             .startWith(false)
             .asDriver()
         
+        let currentPage = BehaviorSubject<Int>(value: 1)
+        
         let response = requestTrigger
-            .flatMapLatest { _ in
-                repository.getMovieList()
+            .withLatestFrom(isLoading)
+            .filter { $0 == false }
+            .withLatestFrom(currentPage)
+            .flatMapLatest { page in
+                repository.getMovieList(page: page)
+                .do(onSuccess: { _ in currentPage.onNext(page + 1) } )
                 .trackActivity(loadingIndicator)
             }.materialize()
         
-        self.results = response
+        let moviesResult = response
             .elements()
-            .asDriver(onErrorJustReturn: [])
+            .startWith([])
+        
+        self.results = moviesResult.scan([], accumulator: +).asDriver(onErrorJustReturn: [])
         
     }
     

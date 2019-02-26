@@ -18,8 +18,9 @@ class FeedRepositoryImpl: FeedRepository {
         self.service = service
     }
     
-    func getMovieList() -> Single<[Movie]> {
-        return self.service.getPopularMovieList(page: 1)
+    func getMovieList(page: Int) -> Single<[Movie]> {
+       
+        return self.service.getPopularMovieList(page: page)
             .map(MovieList.self)
             .map{$0.movies}
     }

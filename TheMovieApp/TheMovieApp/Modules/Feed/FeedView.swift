@@ -41,24 +41,12 @@ extension FeedView {
 
     func configureViews() {
         
-         tableView.register(R.nib.movieTableViewCell)
+        tableView.register(R.nib.movieTableViewCell)
+        self.navigationItem.title = "🎬 The Movie App 🎬"
         
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        tableView.refreshControl = refreshControl
-       
         self.view.addSubview(self.loadingView)
         self.loadingView.prepareForConstraints()
         self.loadingView.pinEdgesToSuperview()
-    }
-    
-    @objc func refresh(_ refreshControl: UIRefreshControl) {
-        
-         //self.viewModel.requestTrigger.onNext( () )
-        //self.loadingView.show()
-        //Request new data
-        // Do your job, when done:
-        refreshControl.endRefreshing()
     }
     
     func setupBindings() {
@@ -70,15 +58,20 @@ extension FeedView {
         self.viewModel.results
             .drive(tableView.rx
                 .items(cellIdentifier: R.reuseIdentifier.movieTableViewCell.identifier,
-                       cellType: MovieTableViewCell.self)) { _, movie, cell in
+                       cellType: MovieTableViewCell.self)) { [unowned self] _ , movie, cell in
                         cell.bind(movie)
+                        if self.tableView.isNearBottomEdge(edgeOffset: 20) {
+                            self.viewModel.requestTrigger.onNext(())
+                        }
             }.disposed(by: rx.disposeBag)
-        
+
         self.tableView.rx
             .modelSelected(Movie.self)
             .subscribe(onNext: { [unowned self ] (movie) in
                 self.delegate?.handle(.showMovieDetails(movie))
             }).disposed(by: rx.disposeBag)
+        
+       
         
         self.viewModel.requestTrigger.onNext( () )
         
@@ -91,4 +84,10 @@ extension FeedView {
         
     }
     
+}
+
+extension UIScrollView {
+    func  isNearBottomEdge(edgeOffset: CGFloat = 20.0) -> Bool {
+        return self.contentOffset.y + self.frame.size.height + edgeOffset > self.contentSize.height
+    }
 }

@@ -23,11 +23,11 @@ class AppCoordinator: Coordinator {
     
     // MARK: - Properties
     let window: UIWindow
-    var navigationController: UINavigationController
+    var navigationController: CustomNavigation
     // MARK: - Coordinator
     init(window: UIWindow) {
         self.window = window
-        self.navigationController = UINavigationController()
+        self.navigationController = CustomNavigation()
     }
     
     var currentView: UIViewController? {
@@ -74,3 +74,29 @@ extension AppCoordinator: AppActionable {
     }
     
 }
+
+
+class CustomNavigation: UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupViews()
+        
+    }
+    
+    override var childForStatusBarStyle: UIViewController? {
+        return self.topViewController
+    }
+    
+    func setupViews() {
+        self.navigationBar.barTintColor = UIColor(hexString: "101031")
+        self.navigationBar.tintColor = UIColor(hexString: "E6E6E6")
+        self.navigationBar.isTranslucent = false
+        self.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17),
+            NSAttributedString.Key.foregroundColor: UIColor(hexString: "E6E6E6")
+        ]
+    }
+}
+    
+

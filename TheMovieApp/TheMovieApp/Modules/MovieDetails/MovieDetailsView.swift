@@ -16,8 +16,6 @@ class MovieDetailsView: UIViewController {
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var directorView: UIView!
     @IBOutlet weak var producerView: UIView!
     @IBOutlet weak var directorNameLabel: UILabel!
@@ -53,7 +51,6 @@ class MovieDetailsView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupParalaxHeader()
         configureViews()
         setupBindings()
     }
@@ -61,13 +58,6 @@ class MovieDetailsView: UIViewController {
 }
 
 extension MovieDetailsView {
-    
-    func setupParalaxHeader() {
-        scrollView.delegate = self
-        headerHeight = self.headerHeightConstraint.constant
-        scrollView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
-        scrollView.contentOffset.y = -(headerHeight)
-    }
     
     func configureViews() {
         
@@ -130,8 +120,6 @@ extension MovieDetailsView {
             self.createReviewCards(reviews)
         }).disposed(by: rx.disposeBag)
         
-        
-        
         viewModel.movie.onNext(self.movie)
     }
     
@@ -151,14 +139,3 @@ extension MovieDetailsView {
     }
 }
 
-extension MovieDetailsView: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let offset = scrollView.contentOffset.y + headerHeight
-        if offset < headerHeight {
-            headerHeightConstraint.constant = headerHeight - offset
-        }
-        self.view.layoutIfNeeded()
-    }
-}

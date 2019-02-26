@@ -18,9 +18,9 @@ class MovieTableViewCell: UITableViewCell {
     
     let imageBaseURL = "https://image.tmdb.org/t/p/w1280"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    override func prepareForReuse() {
+        movieImage.image = nil
     }
     
     func bind(_ movie: Movie) {
@@ -28,8 +28,7 @@ class MovieTableViewCell: UITableViewCell {
             movieImage.af_setImage(withURL: imageUrl)
         }
         else {
-            //put placeholder
-            
+            movieImage.image = R.image.placeholderImage()
         }
         movieNameLabel.text = movie.originalTitle
         releaseDateLabel.text = movie.releaseDate

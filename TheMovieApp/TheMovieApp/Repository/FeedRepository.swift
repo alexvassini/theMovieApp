@@ -12,7 +12,7 @@ import Moya
 
 protocol FeedRepository: class {
     
-    func getMovieList() -> Single<[Movie]>
+    func getMovieList(page: Int) -> Single<[Movie]>
     
     func getMovieDetails(_ movieId: Int) -> Single<MovieDetails>
     

@@ -40,6 +40,7 @@
 		5E48ED98221F99100096F432 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED95221F99100096F432 /* FeedView.swift */; };
 		5E48ED99221F99100096F432 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED96221F99100096F432 /* FeedViewModel.swift */; };
 		5E48ED9A221F99100096F432 /* FeedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E48ED97221F99100096F432 /* FeedView.xib */; };
+		5EB37CDD2224E4D100CB83BD /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB37CDC2224E4D000CB83BD /* UIColor + Extensions.swift */; };
 		98AD647818C816A197FB651A /* Pods_TheMovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD86C7368BC2315E2E419D5C /* Pods_TheMovieAppTests.framework */; };
 		A38893A7E67CE9FFC3B05917 /* Pods_TheMovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094BC5835BBA3528CA37C07E /* Pods_TheMovieApp.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,7 @@
 		5E48ED95221F99100096F432 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		5E48ED96221F99100096F432 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		5E48ED97221F99100096F432 /* FeedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedView.xib; sourceTree = "<group>"; };
+		5EB37CDC2224E4D000CB83BD /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		757021AC96674401471A463C /* Pods-TheMovieAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		84D4E025FF6D3257F3406A5C /* Pods_TheMovieAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD555E46E102602A1F69D09 /* Pods-TheMovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			children = (
 				5E209EC82221A21300BDED06 /* UIView+Constraints.swift */,
 				5E209EB22220B93500BDED06 /* Rx + Utils.swift */,
+				5EB37CDC2224E4D000CB83BD /* UIColor + Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				5E0A5ED1221E32E1005C1566 /* FeedService.swift in Sources */,
 				5E209ECB2222FB3500BDED06 /* LoadingView.swift in Sources */,
 				5E209EBF2221982300BDED06 /* MaterialCardView.swift in Sources */,
+				5EB37CDD2224E4D100CB83BD /* UIColor + Extensions.swift in Sources */,
 				5E0A5ED7221E3BDB005C1566 /* FeedRepository.swift in Sources */,
 				5E209EC92221A21400BDED06 /* UIView+Constraints.swift in Sources */,
 				5E0A5E99221E299B005C1566 /* AppDelegate.swift in Sources */,

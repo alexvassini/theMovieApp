@@ -56,7 +56,6 @@ class AppCoordinator: Coordinator {
     fileprivate func showMovieDetails(_ movie: Movie){
         let view = MovieDetailsView(movie: movie)
         view.delegate = self
-        //view.movie = movie
         self.navigationController.pushViewController(view, animated: true)
     }
 

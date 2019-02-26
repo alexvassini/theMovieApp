@@ -62,7 +62,7 @@
 		5E0A5E98221E299B005C1566 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E0A5E9F221E299C005C1566 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E0A5EA2221E299C005C1566 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5E0A5EA4221E299C005C1566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/AlexandreVassinievski/Documents/theMovieApp/TheMovieApp/TheMovieApp/Base/Info.plist; sourceTree = "<absolute>"; };
+		5E0A5EA4221E299C005C1566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E0A5EA9221E299C005C1566 /* TheMovieAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovieAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0A5EAD221E299C005C1566 /* TheMovieAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieAppTests.swift; sourceTree = "<group>"; };
 		5E0A5EAF221E299C005C1566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -752,9 +752,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C2WX94X8CG;
-				INFOPLIST_FILE = /Users/AlexandreVassinievski/Documents/theMovieApp/TheMovieApp/TheMovieApp/Base/Info.plist;
+				INFOPLIST_FILE = "${SRCROOT}/TheMovieApp/Base/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -774,9 +774,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = C2WX94X8CG;
-				INFOPLIST_FILE = /Users/AlexandreVassinievski/Documents/theMovieApp/TheMovieApp/TheMovieApp/Base/Info.plist;
+				INFOPLIST_FILE = "${SRCROOT}/TheMovieApp/Base/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

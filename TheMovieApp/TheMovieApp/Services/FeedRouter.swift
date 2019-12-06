@@ -42,7 +42,7 @@ extension FeedRouter: TargetType {
         switch self {
         default:
             if let `parameters` = parameters {
-                return .requestParameters(parameters: parameters, encoding: URLEncoding.default) //URLEncoding.default
+                return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
             } else {
                 return .requestPlain
             }

@@ -6,9 +6,6 @@
 //  Copyright © 2019 Alexandre Vassinievski Ribeiro. All rights reserved.
 //
 
-// To parse the JSON, do:
-//
-//   let movies = try? newJSONDecoder().decode(MovieList.self, from: jsonData)
 
 import Foundation
 
@@ -22,8 +19,6 @@ struct MovieList: Codable {
         case totalPages = "total_pages"
         case movies = "results"
     }
-    
-
 }
 
 struct Movie: Codable {

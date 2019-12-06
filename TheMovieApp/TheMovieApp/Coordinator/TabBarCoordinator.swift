@@ -9,25 +9,20 @@
 import Foundation
 import UIKit
 
-enum AppAction {
-    
+enum TabBar: AppAction {
     case showMovieDetails(_ movie: Movie)
-    
 }
 
-protocol AppActionable: class {
-    func handle(_ action: AppAction)
-}
-
-class AppCoordinator: Coordinator {
+class TabBarCoordinator: Coordinator {
     
     // MARK: - Properties
-    let window: UIWindow
-    var navigationController: CustomNavigation
+    private let window: UIWindow
+    private let tabBarController: UITabBarController
+
     // MARK: - Coordinator
     init(window: UIWindow) {
         self.window = window
-        self.navigationController = CustomNavigation()
+        self.tabBarController = UITabBarController()
     }
     
     var currentView: UIViewController? {
@@ -42,37 +37,54 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        showFeed()
-        
+        setupInitialViewController()
+    }
+
+    internal func setupInitialViewController() {
+
+        let homeView = UINavigationController(rootViewController: FeedViewController(delegate: self))
+        homeView.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+
+        let searchView = UINavigationController(rootViewController: FeedViewController(delegate: self))
+        searchView.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+
+        tabBarController.setViewControllers([homeView, searchView], animated: true)
+
+        currentView = tabBarController
+
     }
     
-    fileprivate func showFeed(){
-        let homeView = FeedView()
-        self.navigationController.setViewControllers([homeView], animated: false)
-        homeView.delegate = self
-        self.currentView = navigationController
-    }
+//    fileprivate func showFeed(){
+//        let homeView = FeedViewController()
+//        self.navigationController.setViewControllers([homeView], animated: false)
+//        homeView.delegate = self
+//        self.currentView = navigationController
+//    }
     
     fileprivate func showMovieDetails(_ movie: Movie){
         let view = MovieDetailsView(movie: movie)
         view.delegate = self
-        self.navigationController.pushViewController(view, animated: true)
+        present(view)
+    }
+
+    internal func present(_ controller: UIViewController) {
+        tabBarController.present(controller, animated: true, completion: nil)
     }
 
 }
 
-extension AppCoordinator: AppActionable {
-    
-    func handle(_ action: AppAction) {
-        
+extension TabBarCoordinator: AppActionable {
+
+    func handle(sender: UIViewController, _ action: AppAction) {
         switch action {
-            
-        case .showMovieDetails(let movie):
+
+        case TabBar.showMovieDetails(let movie):
             showMovieDetails(movie)
-            
+
+        default:
+            break
         }
     }
-    
 }
 
 
@@ -98,5 +110,5 @@ class CustomNavigation: UINavigationController {
         ]
     }
 }
-    
+
 

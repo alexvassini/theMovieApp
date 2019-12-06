@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,13 +36,14 @@
 		5E48ED8B221F8E820096F432 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED89221F8E820096F432 /* MovieTableViewCell.swift */; };
 		5E48ED8C221F8E820096F432 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E48ED8A221F8E820096F432 /* MovieTableViewCell.xib */; };
 		5E48ED8F221F96150096F432 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED8E221F96150096F432 /* Coordinator.swift */; };
-		5E48ED91221F96460096F432 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED90221F96460096F432 /* AppCoordinator.swift */; };
-		5E48ED98221F99100096F432 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED95221F99100096F432 /* FeedView.swift */; };
+		5E48ED91221F96460096F432 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED90221F96460096F432 /* TabBarCoordinator.swift */; };
+		5E48ED98221F99100096F432 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED95221F99100096F432 /* FeedViewController.swift */; };
 		5E48ED99221F99100096F432 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48ED96221F99100096F432 /* FeedViewModel.swift */; };
-		5E48ED9A221F99100096F432 /* FeedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E48ED97221F99100096F432 /* FeedView.xib */; };
+		5E48ED9A221F99100096F432 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E48ED97221F99100096F432 /* FeedViewController.xib */; };
 		5EB37CDD2224E4D100CB83BD /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB37CDC2224E4D000CB83BD /* UIColor + Extensions.swift */; };
 		98AD647818C816A197FB651A /* Pods_TheMovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD86C7368BC2315E2E419D5C /* Pods_TheMovieAppTests.framework */; };
 		A38893A7E67CE9FFC3B05917 /* Pods_TheMovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094BC5835BBA3528CA37C07E /* Pods_TheMovieApp.framework */; };
+		ACA9F34B2397311E0004380F /* MovieTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9F34A2397311E0004380F /* MovieTableViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,15 +94,16 @@
 		5E48ED89221F8E820096F432 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		5E48ED8A221F8E820096F432 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		5E48ED8E221F96150096F432 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		5E48ED90221F96460096F432 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		5E48ED95221F99100096F432 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		5E48ED90221F96460096F432 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		5E48ED95221F99100096F432 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		5E48ED96221F99100096F432 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
-		5E48ED97221F99100096F432 /* FeedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedView.xib; sourceTree = "<group>"; };
+		5E48ED97221F99100096F432 /* FeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
 		5EB37CDC2224E4D000CB83BD /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		757021AC96674401471A463C /* Pods-TheMovieAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		84D4E025FF6D3257F3406A5C /* Pods_TheMovieAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD555E46E102602A1F69D09 /* Pods-TheMovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A074AAAD06B31610B57B3861 /* Pods-TheMovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp.release.xcconfig"; sourceTree = "<group>"; };
+		ACA9F34A2397311E0004380F /* MovieTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		FD86C7368BC2315E2E419D5C /* Pods_TheMovieAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -256,9 +258,9 @@
 		5E209EB02220B5A800BDED06 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				5E48ED95221F99100096F432 /* FeedView.swift */,
+				5E48ED95221F99100096F432 /* FeedViewController.swift */,
 				5E48ED96221F99100096F432 /* FeedViewModel.swift */,
-				5E48ED97221F99100096F432 /* FeedView.xib */,
+				5E48ED97221F99100096F432 /* FeedViewController.xib */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				5E48ED89221F8E820096F432 /* MovieTableViewCell.swift */,
+				ACA9F34A2397311E0004380F /* MovieTableViewCellViewModel.swift */,
 				5E48ED8A221F8E820096F432 /* MovieTableViewCell.xib */,
 				5E209EC4222199B300BDED06 /* ReviewCardView.swift */,
 				5E209EC5222199B300BDED06 /* ReviewCardView.xib */,
@@ -317,7 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				5E48ED8E221F96150096F432 /* Coordinator.swift */,
-				5E48ED90221F96460096F432 /* AppCoordinator.swift */,
+				5E48ED90221F96460096F432 /* TabBarCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -410,7 +413,7 @@
 			files = (
 				5E209ECF222307B700BDED06 /* movie-loading.json in Resources */,
 				5E209EC7222199B300BDED06 /* ReviewCardView.xib in Resources */,
-				5E48ED9A221F99100096F432 /* FeedView.xib in Resources */,
+				5E48ED9A221F99100096F432 /* FeedViewController.xib in Resources */,
 				5E0A5EA3221E299C005C1566 /* LaunchScreen.storyboard in Resources */,
 				5E0A5EA0221E299C005C1566 /* Assets.xcassets in Resources */,
 				5E209ED922236E4A00BDED06 /* empty-box.json in Resources */,
@@ -477,40 +480,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwiftUtilities/RxSwiftUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8EDDCBC44E3F8EA2ECF266B3 /* [CP] Check Pods Manifest.lock */ = {
@@ -541,28 +519,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/KIF/KIF.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KIF.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -573,8 +538,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E0A5ECF221E32D3005C1566 /* FeedRouter.swift in Sources */,
+				ACA9F34B2397311E0004380F /* MovieTableViewCellViewModel.swift in Sources */,
 				5E209EB32220B93500BDED06 /* Rx + Utils.swift in Sources */,
-				5E48ED91221F96460096F432 /* AppCoordinator.swift in Sources */,
+				5E48ED91221F96460096F432 /* TabBarCoordinator.swift in Sources */,
 				5E0A5ED6221E3BDB005C1566 /* FeedRepositoryImpl.swift in Sources */,
 				5E0A5ED1221E32E1005C1566 /* FeedService.swift in Sources */,
 				5E209ECB2222FB3500BDED06 /* LoadingView.swift in Sources */,
@@ -588,7 +554,7 @@
 				5E209EB82220D47900BDED06 /* MovieDetailsView.swift in Sources */,
 				5E0A5ECB221E2FF8005C1566 /* MovieList.swift in Sources */,
 				5E0A5EDB221E3D0A005C1566 /* R.generated.swift in Sources */,
-				5E48ED98221F99100096F432 /* FeedView.swift in Sources */,
+				5E48ED98221F99100096F432 /* FeedViewController.swift in Sources */,
 				5E48ED8F221F96150096F432 /* Coordinator.swift in Sources */,
 				5E0A5ECD221E31C5005C1566 /* MovieDetails.swift in Sources */,
 				5E48ED8B221F8E820096F432 /* MovieTableViewCell.swift in Sources */,
@@ -782,6 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Alexvassini.TheMovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -794,7 +761,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8AD555E46E102602A1F69D09 /* Pods-TheMovieAppTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C2WX94X8CG;
@@ -816,7 +782,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 757021AC96674401471A463C /* Pods-TheMovieAppTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C2WX94X8CG;

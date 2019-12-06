@@ -6,10 +6,28 @@
 //  Copyright © 2019 Alexandre Vassinievski Ribeiro. All rights reserved.
 //
 
-
 import Foundation
+import UIKit
 
-protocol Coordinator: class {
+protocol Coordinator: AnyObject {
     func start()
 }
 
+protocol NavigationCoordinator: AnyObject {
+
+    var navigation: UINavigationController! { get }
+    var delegate: AppActionable? { get set }
+    var tabBarIndex: Int { get }
+
+    func start() -> UINavigationController
+    func pushViewController(_ viewController: UIViewController)
+    func presentNavigationController(_ controller: UINavigationController,
+                                     presentationStyle: UIModalPresentationStyle,
+                                     animated: Bool)
+}
+
+protocol AppAction {}
+
+protocol AppActionable: AnyObject {
+    func handle(sender: UIViewController, _ action: AppAction)
+}

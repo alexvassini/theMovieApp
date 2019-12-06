@@ -6,7 +6,6 @@
 //  Copyright © 2019 Alexandre Vassinievski Ribeiro. All rights reserved.
 //
 
-
 import Foundation
 import RxSwift
 import Moya

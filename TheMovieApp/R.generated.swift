@@ -53,8 +53,8 @@ struct R: Rswift.Validatable {
   
   /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
-    /// Nib `FeedView`.
-    static let feedView = _R.nib._FeedView()
+    /// Nib `FeedViewController`.
+    static let feedViewController = _R.nib._FeedViewController()
     /// Nib `MovieDetailsView`.
     static let movieDetailsView = _R.nib._MovieDetailsView()
     /// Nib `MovieTableViewCell`.
@@ -62,10 +62,10 @@ struct R: Rswift.Validatable {
     /// Nib `ReviewCardView`.
     static let reviewCardView = _R.nib._ReviewCardView()
     
-    /// `UINib(name: "FeedView", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.feedView) instead")
-    static func feedView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.feedView)
+    /// `UINib(name: "FeedViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.feedViewController) instead")
+    static func feedViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.feedViewController)
     }
     
     /// `UINib(name: "MovieDetailsView", in: bundle)`
@@ -86,8 +86,8 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.reviewCardView)
     }
     
-    static func feedView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.feedView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    static func feedViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.feedViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
     static func movieDetailsView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
@@ -145,9 +145,9 @@ struct _R: Rswift.Validatable {
   }
   
   struct nib {
-    struct _FeedView: Rswift.NibResourceType {
+    struct _FeedViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
-      let name = "FeedView"
+      let name = "FeedViewController"
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView

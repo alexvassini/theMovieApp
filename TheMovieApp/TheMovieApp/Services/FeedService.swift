@@ -11,9 +11,7 @@ import Moya
 import RxSwift
 
 protocol FeedService {
-    
+
     func getMovieDetails(movieId: Int) -> Single<Response>
-    
     func getPopularMovieList(page: Int) -> Single<Response>
-    
 }

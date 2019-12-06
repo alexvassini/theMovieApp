@@ -54,7 +54,7 @@ DEPENDENCIES:
   - RxSwiftUtilities
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireImage
     - KIF
@@ -88,6 +88,6 @@ SPEC CHECKSUMS:
   RxSwiftExt: 01f8ecbeeb355698e9c75365ebe908b00dacf45d
   RxSwiftUtilities: b486df7454cc867c3ea626ce24110511159e7044
 
-PODFILE CHECKSUM: 9977edbf2b3ccc1515e837d220c52f7ab1040620
+PODFILE CHECKSUM: f80828bcd5b2426071dbfdfb98f205708150e368
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

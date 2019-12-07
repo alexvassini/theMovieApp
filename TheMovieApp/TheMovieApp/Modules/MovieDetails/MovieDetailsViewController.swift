@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MovieDetailsView: UIViewController {
+class MovieDetailsViewController: UIViewController {
     
     @IBOutlet weak var backdropPathImage: UIImageView!
     @IBOutlet weak var posterImage: UIImageView!
@@ -25,12 +25,8 @@ class MovieDetailsView: UIViewController {
     @IBOutlet weak var reviewScrollView: UIScrollView!
     @IBOutlet weak var reviewContainer: UIView!
 
-    let imageBaseURL = "https://image.tmdb.org/t/p/w1280"
-    let posterBaseURL = "https://image.tmdb.org/t/p/w500"
-    
-    let viewModel: MovieDetailsViewModel!
-    let movie: Movie
-    
+   private let viewModel: MovieDetailsViewModel!
+
     var headerHeight: CGFloat = 200.0
     var headerMultiplier: CGFloat = 0.2
     
@@ -40,9 +36,8 @@ class MovieDetailsView: UIViewController {
     weak var delegate: AppActionable?
 
     init(movie: Movie) {
-        self.movie = movie
-        self.viewModel = MovieDetailsViewModel()
-        super.init(nibName: String(describing: MovieDetailsView.self), bundle: nil)
+        self.viewModel = MovieDetailsViewModel(movie: movie)
+        super.init(nibName: String(describing: MovieDetailsViewController.self), bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,38 +52,38 @@ class MovieDetailsView: UIViewController {
     
 }
 
-extension MovieDetailsView {
+extension MovieDetailsViewController {
     
     func configureViews() {
         
-        if let backdropPathUrl = URL(string: (imageBaseURL + movie.backdropPath)){
+        if let backdropPathUrl = viewModel.getBackdropPathImageUrl() {
             backdropPathImage.af_setImage(withURL: backdropPathUrl)
         }
    
-        if let posterUrl = URL(string: (posterBaseURL + movie.posterPath)){
+        if let posterUrl = viewModel.getPosterImageUrl() {
             posterImage.af_setImage(withURL: posterUrl)
         }
         
-        movieNameLabel.text = movie.originalTitle
-        releaseDateLabel.text = movie.releaseDate
+        movieNameLabel.text = viewModel.getMovieTitle()
+        releaseDateLabel.text = viewModel.getMovieReleaseDate()
         
-        overviewLabel.text = movie.overview
+        overviewLabel.text = viewModel.getMovieOverview()
         
-        reviewContainer.addSubview(loadingView)
-        loadingView.prepareForConstraints()
-        loadingView.pinEdgesToSuperview()
-        
-        reviewContainer.addSubview(emptyStateView)
-        emptyStateView.prepareForConstraints()
-        emptyStateView.pinEdgesToSuperview()
-        
-  
+//        reviewContainer.addSubview(loadingView)
+//        loadingView.prepareForConstraints()
+//        loadingView.pinEdgesToSuperview()
+//
+//        reviewContainer.addSubview(emptyStateView)
+//        emptyStateView.prepareForConstraints()
+//        emptyStateView.pinEdgesToSuperview()
+//
+//
     }
     
     func setupBindings() {
         
-        viewModel.isLoading.drive(onNext: { (isLoading) in
-            self.loadingAnimation(isLoading)
+        viewModel.isLoading.drive(onNext: { [weak self] (isLoading) in
+            self?.loadingAnimation(isLoading)
         }).disposed(by: rx.disposeBag)
 
         viewModel.director
@@ -96,8 +91,8 @@ extension MovieDetailsView {
             .drive(directorView.rx.isHidden)
             .disposed(by: rx.disposeBag)
         
-        viewModel.director.drive(onNext: { [unowned self](directors) in
-            self.directorNameLabel.text = directors.joined(separator: ", ")
+        viewModel.director.drive(onNext: { [weak self](directors) in
+            self?.directorNameLabel.text = directors.joined(separator: ", ")
         }).disposed(by: rx.disposeBag)
         
         viewModel.producer
@@ -105,22 +100,22 @@ extension MovieDetailsView {
             .drive(producerView.rx.isHidden)
             .disposed(by: rx.disposeBag)
         
-        viewModel.producer.drive(onNext: { [unowned self](producers) in
-            self.producerNameLabel.text = producers.joined(separator: ", ")
+        viewModel.producer.drive(onNext: { [weak self] (producers) in
+            self?.producerNameLabel.text = producers.joined(separator: ", ")
         }).disposed(by: rx.disposeBag)
         
         
-        viewModel.reviews.drive(onNext: { [unowned self] reviews in
-            if reviews.isEmpty {
-                 DispatchQueue.main.async {
-                    self.emptyStateView.show()
-                }
-            }
-            else{self.emptyStateView.hide()}
-            self.createReviewCards(reviews)
-        }).disposed(by: rx.disposeBag)
+//        viewModel.reviews.drive(onNext: { [weak self] reviews in
+//            if reviews.isEmpty {
+//                 DispatchQueue.main.async {
+//                    self.emptyStateView.show()
+//                }
+//            }
+//            else{self.emptyStateView.hide()}
+//            self.createReviewCards(reviews)
+//        }).disposed(by: rx.disposeBag)
         
-        viewModel.movie.onNext(self.movie)
+        viewModel.fetchMovieData.onNext(())
     }
     
     func createReviewCards(_ reviews: [Review]){

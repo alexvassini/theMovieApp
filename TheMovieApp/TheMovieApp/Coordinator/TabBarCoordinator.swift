@@ -30,7 +30,9 @@ class TabBarCoordinator: Coordinator {
             return window.rootViewController
         }
         set {
-            UIView.transition(with: self.window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            UIView.transition(with: self.window, duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {
                 self.window.rootViewController = newValue
             }, completion: nil)
         }
@@ -42,27 +44,21 @@ class TabBarCoordinator: Coordinator {
 
     internal func setupInitialViewController() {
 
+        // Home View
         let homeView = UINavigationController(rootViewController: FeedViewController(delegate: self))
         homeView.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
 
+        // Search  View
         let searchView = UINavigationController(rootViewController: FeedViewController(delegate: self))
         searchView.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
 
         tabBarController.setViewControllers([homeView, searchView], animated: true)
-
         currentView = tabBarController
 
     }
     
-//    fileprivate func showFeed(){
-//        let homeView = FeedViewController()
-//        self.navigationController.setViewControllers([homeView], animated: false)
-//        homeView.delegate = self
-//        self.currentView = navigationController
-//    }
-    
     fileprivate func showMovieDetails(_ movie: Movie){
-        let view = MovieDetailsView(movie: movie)
+        let view = MovieDetailsViewController(movie: movie)
         view.delegate = self
         present(view)
     }
@@ -86,29 +82,3 @@ extension TabBarCoordinator: AppActionable {
         }
     }
 }
-
-
-class CustomNavigation: UINavigationController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupViews()
-        
-    }
-    
-    override var childForStatusBarStyle: UIViewController? {
-        return self.topViewController
-    }
-    
-    func setupViews() {
-        self.navigationBar.barTintColor = UIColor(hexString: "101031")
-        self.navigationBar.tintColor = UIColor(hexString: "E6E6E6")
-        self.navigationBar.isTranslucent = false
-        self.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17),
-            NSAttributedString.Key.foregroundColor: UIColor(hexString: "E6E6E6")
-        ]
-    }
-}
-
-

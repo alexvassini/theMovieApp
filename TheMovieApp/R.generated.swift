@@ -55,8 +55,8 @@ struct R: Rswift.Validatable {
   struct nib {
     /// Nib `FeedViewController`.
     static let feedViewController = _R.nib._FeedViewController()
-    /// Nib `MovieDetailsView`.
-    static let movieDetailsView = _R.nib._MovieDetailsView()
+    /// Nib `MovieDetailsViewController`.
+    static let movieDetailsViewController = _R.nib._MovieDetailsViewController()
     /// Nib `MovieTableViewCell`.
     static let movieTableViewCell = _R.nib._MovieTableViewCell()
     /// Nib `ReviewCardView`.
@@ -68,10 +68,10 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.feedViewController)
     }
     
-    /// `UINib(name: "MovieDetailsView", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.movieDetailsView) instead")
-    static func movieDetailsView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.movieDetailsView)
+    /// `UINib(name: "MovieDetailsViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.movieDetailsViewController) instead")
+    static func movieDetailsViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.movieDetailsViewController)
     }
     
     /// `UINib(name: "MovieTableViewCell", in: bundle)`
@@ -90,8 +90,8 @@ struct R: Rswift.Validatable {
       return R.nib.feedViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
-    static func movieDetailsView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.movieDetailsView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    static func movieDetailsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.movieDetailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
     static func movieTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MovieTableViewCell? {
@@ -156,9 +156,9 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _MovieDetailsView: Rswift.NibResourceType {
+    struct _MovieDetailsViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
-      let name = "MovieDetailsView"
+      let name = "MovieDetailsViewController"
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView

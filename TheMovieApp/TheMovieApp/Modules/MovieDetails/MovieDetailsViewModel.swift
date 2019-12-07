@@ -13,27 +13,32 @@ import RxSwiftUtilities
 import Moya
 
 class MovieDetailsViewModel {
-    
+
+    private let repository: FeedRepository
+    private let movie: Movie
+    private let imageBaseURL = "https://image.tmdb.org/t/p/w1280"
+    private let posterBaseURL = "https://image.tmdb.org/t/p/w500"
+
     let director: Driver<[String]>
     let producer: Driver<[String]>
     let reviews: Driver<[Review]>
     let error: Observable<RequestError?>
     let isLoading: Driver<Bool>
-    let repository: FeedRepository
+    let fetchMovieData: PublishSubject<()> = PublishSubject()
     
-    let movie: PublishSubject<Movie> = PublishSubject()
-    
-    init(repository: FeedRepository = FeedRepositoryImpl()) {
-        
+    init(movie: Movie,
+         repository: FeedRepository = FeedRepositoryImpl()) {
+
         self.repository = repository
-    
+        self.movie = movie
+
         let loadingIndicator = ActivityIndicator()
         
         self.isLoading = loadingIndicator
             .startWith(false)
             .asDriver()
-        
-        let result = movie.flatMapLatest { (movie) in
+
+        let result = fetchMovieData.flatMapLatest { _ in
             repository.getMovieDetails(movie.id)
         }.materialize()
         
@@ -50,21 +55,37 @@ class MovieDetailsViewModel {
             .map{$0.filter{$0.job == "Producer"}}
             .map{$0.map{$0.name}}
             .asDriver(onErrorJustReturn: [])
-        
+
         self.reviews = movieDetails
             .map{$0.reviews.results}
             .asDriver(onErrorJustReturn:[])
         
-       self.error  = result
+        self.error  = result
             .errors()
             .map { $0 as? MoyaError }
             .unwrap()
             .mapError(RequestError.self)
-    
+
+    }
+
+    func getBackdropPathImageUrl() -> URL? {
+        return URL(string: (imageBaseURL + movie.backdropPath))
+    }
+
+    func getPosterImageUrl() -> URL? {
+        return URL(string: (posterBaseURL + movie.posterPath))
+    }
+
+    func getMovieTitle() -> String {
+        return movie.originalTitle
+    }
+
+    func getMovieReleaseDate() -> String {
+        return movie.releaseDate
+    }
+
+    func getMovieOverview() -> String {
+        return movie.overview
     }
 
 }
-
-
-
-

@@ -42,7 +42,8 @@ class MovieDetailsViewModel {
 
         let result = fetchMovieData
             .flatMapLatest { id in
-            repository.getMovieDetails(id)
+                repository.getMovieDetails(id)
+                    .trackActivity(loadingIndicator)
         }.materialize()
         
         let movieDetails = result.elements().share()

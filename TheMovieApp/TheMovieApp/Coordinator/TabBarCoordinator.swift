@@ -49,7 +49,7 @@ class TabBarCoordinator: Coordinator {
         homeView.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
 
         // Search  View
-        let searchView = UINavigationController(rootViewController: FeedViewController(delegate: self))
+        let searchView = UINavigationController(rootViewController: SearchViewController(delegate: self))
         searchView.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
 
         tabBarController.setViewControllers([homeView, searchView], animated: true)

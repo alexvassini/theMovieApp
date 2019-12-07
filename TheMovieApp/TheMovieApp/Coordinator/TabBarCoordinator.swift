@@ -57,12 +57,15 @@ class TabBarCoordinator: Coordinator {
 
     }
     
-    fileprivate func showMovieDetails(_ movie: Movie){
+    fileprivate func showMovieDetails(_ sender: UIViewController, movie: Movie){
         let view = MovieDetailsViewController(movie: movie, delegate: self)
-        present(view)
+        sender.navigationController?.pushViewController(view, animated: true)
+       // sender.present(view, animated: true, completion: nil)
+        //present(view)
     }
 
     internal func present(_ controller: UIViewController) {
+        controller.modalPresentationStyle = .fullScreen
         tabBarController.present(controller, animated: true, completion: nil)
     }
 
@@ -74,7 +77,7 @@ extension TabBarCoordinator: AppActionable {
         switch action {
 
         case .showMovieDetails(let movie):
-            showMovieDetails(movie)
+            showMovieDetails(sender, movie: movie)
 
         }
     }

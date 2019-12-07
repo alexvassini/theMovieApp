@@ -21,22 +21,21 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var directorNameLabel: UILabel!
     @IBOutlet weak var producerNameLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
-    @IBOutlet weak var reviewsStackView: UIStackView!
-    @IBOutlet weak var reviewScrollView: UIScrollView!
-    @IBOutlet weak var reviewContainer: UIView!
-
-   private let viewModel: MovieDetailsViewModel!
-
-    var headerHeight: CGFloat = 200.0
-    var headerMultiplier: CGFloat = 0.2
+    @IBOutlet weak var revenueView: UIView!
+    @IBOutlet weak var budgetView: UIView!
+    @IBOutlet weak var budgetLabel: UILabel!
+    @IBOutlet weak var revenueLabel: UILabel!
     
+    private let viewModel: MovieDetailsViewModel
+
     let loadingView = LoadingView()
-    let emptyStateView = EmptyStateView()
-    
+
     weak var delegate: AppActionable?
 
-    init(movie: Movie) {
+    init(movie: Movie,
+         delegate: AppActionable? = nil) {
         self.viewModel = MovieDetailsViewModel(movie: movie)
+        self.delegate = delegate
         super.init(nibName: String(describing: MovieDetailsViewController.self), bundle: nil)
     }
     
@@ -49,17 +48,17 @@ class MovieDetailsViewController: UIViewController {
         configureViews()
         setupBindings()
     }
-    
+
 }
 
 extension MovieDetailsViewController {
     
     func configureViews() {
-        
+
         if let backdropPathUrl = viewModel.getBackdropPathImageUrl() {
             backdropPathImage.af_setImage(withURL: backdropPathUrl)
         }
-   
+
         if let posterUrl = viewModel.getPosterImageUrl() {
             posterImage.af_setImage(withURL: posterUrl)
         }
@@ -68,16 +67,11 @@ extension MovieDetailsViewController {
         releaseDateLabel.text = viewModel.getMovieReleaseDate()
         
         overviewLabel.text = viewModel.getMovieOverview()
-        
-//        reviewContainer.addSubview(loadingView)
-//        loadingView.prepareForConstraints()
-//        loadingView.pinEdgesToSuperview()
-//
-//        reviewContainer.addSubview(emptyStateView)
-//        emptyStateView.prepareForConstraints()
-//        emptyStateView.pinEdgesToSuperview()
-//
-//
+
+        self.view.addSubview(loadingView)
+        loadingView.prepareForConstraints()
+        loadingView.pinEdgesToSuperview()
+
     }
     
     func setupBindings() {
@@ -103,33 +97,31 @@ extension MovieDetailsViewController {
         viewModel.producer.drive(onNext: { [weak self] (producers) in
             self?.producerNameLabel.text = producers.joined(separator: ", ")
         }).disposed(by: rx.disposeBag)
-        
-        
-//        viewModel.reviews.drive(onNext: { [weak self] reviews in
-//            if reviews.isEmpty {
-//                 DispatchQueue.main.async {
-//                    self.emptyStateView.show()
-//                }
-//            }
-//            else{self.emptyStateView.hide()}
-//            self.createReviewCards(reviews)
-//        }).disposed(by: rx.disposeBag)
-        
-        viewModel.fetchMovieData.onNext(())
-    }
-    
-    func createReviewCards(_ reviews: [Review]){
-        for review in reviews {
-            let view = ReviewCardView(review)
-            self.reviewsStackView.addArrangedSubview(view)
-            view.prepareForConstraints()
-            view.widthAnchor.constraint(equalTo: reviewScrollView.widthAnchor, multiplier: 0.90).isActive = true
-        }
+
+        viewModel.budget.drive(onNext: { [weak self] (budget) in
+            self?.budgetLabel.text = budget
+        }).disposed(by: rx.disposeBag)
+
+        viewModel.revenue.drive(onNext: { [weak self] (revenue) in
+            self?.revenueLabel.text = revenue
+        }).disposed(by: rx.disposeBag)
+
+        viewModel.budget
+            .map{$0.isEmpty}
+            .drive(budgetView.rx.isHidden)
+            .disposed(by: rx.disposeBag)
+
+        viewModel.revenue
+            .map{$0.isEmpty}
+            .drive(revenueView.rx.isHidden)
+            .disposed(by: rx.disposeBag)
+
+        viewModel.fetchMovieDetails()
     }
     
     func loadingAnimation(_ isLoading: Bool){
         DispatchQueue.main.async {
-             isLoading ? self.loadingView.show() : self.loadingView.hide()
+            isLoading ? self.loadingView.show() : self.loadingView.hide()
         }
     }
 }

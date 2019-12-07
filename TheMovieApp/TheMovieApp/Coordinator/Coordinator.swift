@@ -26,8 +26,6 @@ protocol NavigationCoordinator: AnyObject {
                                      animated: Bool)
 }
 
-protocol AppAction {}
-
 protocol AppActionable: AnyObject {
     func handle(sender: UIViewController, _ action: AppAction)
 }

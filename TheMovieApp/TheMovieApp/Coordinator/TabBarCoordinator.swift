@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum TabBar: AppAction {
+enum AppAction {
     case showMovieDetails(_ movie: Movie)
 }
 
@@ -58,8 +58,7 @@ class TabBarCoordinator: Coordinator {
     }
     
     fileprivate func showMovieDetails(_ movie: Movie){
-        let view = MovieDetailsViewController(movie: movie)
-        view.delegate = self
+        let view = MovieDetailsViewController(movie: movie, delegate: self)
         present(view)
     }
 
@@ -74,11 +73,9 @@ extension TabBarCoordinator: AppActionable {
     func handle(sender: UIViewController, _ action: AppAction) {
         switch action {
 
-        case TabBar.showMovieDetails(let movie):
+        case .showMovieDetails(let movie):
             showMovieDetails(movie)
 
-        default:
-            break
         }
     }
 }

@@ -71,7 +71,7 @@ extension FeedViewController {
         self.tableView.rx
             .modelSelected(Movie.self)
             .subscribe(onNext: { [unowned self ] (movie) in
-                self.delegate?.handle(sender: self, TabBar.showMovieDetails(movie))
+                self.delegate?.handle(sender: self, .showMovieDetails(movie))
             }).disposed(by: rx.disposeBag)
 
         self.viewModel.requestTrigger.onNext( () )

@@ -24,8 +24,6 @@
 		5E209EB92220D47900BDED06 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E209EB62220D47900BDED06 /* MovieDetailsViewModel.swift */; };
 		5E209EBA2220D47900BDED06 /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E209EB72220D47900BDED06 /* MovieDetailsViewController.xib */; };
 		5E209EBF2221982300BDED06 /* MaterialCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E209EBE2221982300BDED06 /* MaterialCardView.swift */; };
-		5E209EC6222199B300BDED06 /* ReviewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E209EC4222199B300BDED06 /* ReviewCardView.swift */; };
-		5E209EC7222199B300BDED06 /* ReviewCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E209EC5222199B300BDED06 /* ReviewCardView.xib */; };
 		5E209EC92221A21400BDED06 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E209EC82221A21300BDED06 /* UIView+Constraints.swift */; };
 		5E209ECB2222FB3500BDED06 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E209ECA2222FB3500BDED06 /* LoadingView.swift */; };
 		5E209ECF222307B700BDED06 /* movie-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E209ECE222307B600BDED06 /* movie-loading.json */; };
@@ -82,8 +80,6 @@
 		5E209EB62220D47900BDED06 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		5E209EB72220D47900BDED06 /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
 		5E209EBE2221982300BDED06 /* MaterialCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialCardView.swift; sourceTree = "<group>"; };
-		5E209EC4222199B300BDED06 /* ReviewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCardView.swift; sourceTree = "<group>"; };
-		5E209EC5222199B300BDED06 /* ReviewCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCardView.xib; sourceTree = "<group>"; };
 		5E209EC82221A21300BDED06 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		5E209ECA2222FB3500BDED06 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5E209ECE222307B600BDED06 /* movie-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "movie-loading.json"; sourceTree = "<group>"; };
@@ -310,8 +306,6 @@
 				5E48ED89221F8E820096F432 /* MovieTableViewCell.swift */,
 				ACA9F34A2397311E0004380F /* MovieTableViewCellViewModel.swift */,
 				5E48ED8A221F8E820096F432 /* MovieTableViewCell.xib */,
-				5E209EC4222199B300BDED06 /* ReviewCardView.swift */,
-				5E209EC5222199B300BDED06 /* ReviewCardView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -412,7 +406,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E209ECF222307B700BDED06 /* movie-loading.json in Resources */,
-				5E209EC7222199B300BDED06 /* ReviewCardView.xib in Resources */,
 				5E48ED9A221F99100096F432 /* FeedViewController.xib in Resources */,
 				5E0A5EA3221E299C005C1566 /* LaunchScreen.storyboard in Resources */,
 				5E0A5EA0221E299C005C1566 /* Assets.xcassets in Resources */,
@@ -550,7 +543,6 @@
 				5E209EC92221A21400BDED06 /* UIView+Constraints.swift in Sources */,
 				5E0A5E99221E299B005C1566 /* AppDelegate.swift in Sources */,
 				5E209EB92220D47900BDED06 /* MovieDetailsViewModel.swift in Sources */,
-				5E209EC6222199B300BDED06 /* ReviewCardView.swift in Sources */,
 				5E209EB82220D47900BDED06 /* MovieDetailsViewController.swift in Sources */,
 				5E0A5ECB221E2FF8005C1566 /* MovieList.swift in Sources */,
 				5E0A5EDB221E3D0A005C1566 /* R.generated.swift in Sources */,

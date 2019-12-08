@@ -11,7 +11,7 @@ import Moya
 import RxSwift
 
 class FeedRepositoryImpl: FeedRepository {
-    
+
     let service: FeedService
     
     init(service: FeedService = FeedServiceImpl()) {
@@ -26,7 +26,13 @@ class FeedRepositoryImpl: FeedRepository {
     }
     
     func getMovieDetails(_ movieId: Int) -> Single<MovieDetails> {
-        return self.service.getMovieDetails(movieId: movieId).debug("repository").map(MovieDetails.self)
+        return self.service.getMovieDetails(movieId: movieId).map(MovieDetails.self)
     }
-    
+
+    func searchMovies(query: String, page: Int) -> Single<[Movie]> {
+
+        return self.service.searchMovies(query: query, page: page)
+                   .map(MovieList.self)
+                   .map{$0.movies}
+    }
 }

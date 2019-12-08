@@ -17,7 +17,7 @@ class SearchViewController: UIViewController {
     let tableView = UITableView()
 
     let searchBar: UISearchBar = {
-       let searchBar = UISearchBar()
+        let searchBar = UISearchBar()
         searchBar.searchBarStyle = UISearchBar.Style.prominent
         searchBar.placeholder = " Search..."
         searchBar.sizeToFit()
@@ -39,8 +39,8 @@ class SearchViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         configureViews()
         setupBindings()
     }
@@ -51,11 +51,11 @@ extension SearchViewController {
 
     func configureViews() {
 
-        searchBar.delegate = self
+        tableView.register(R.nib.movieTableViewCell)
         self.navigationItem.title = "🎬 Search 🎬"
 
-       // view.addSubview(tableView)
         self.view.addSubview(searchBar)
+        self.view.addSubview(tableView)
         self.view.addSubview(loadingView)
 
         // MARK: - Setup constraints
@@ -67,6 +67,11 @@ extension SearchViewController {
         searchBar.pinLeft()
         searchBar.pinRight()
 
+        tableView.pinTop(0, target: searchBar)
+        tableView.pinLeft()
+        tableView.pinRight()
+        tableView.pinBottom()
+
     }
 
     func setupBindings() {
@@ -74,6 +79,36 @@ extension SearchViewController {
         viewModel.isLoading.drive(onNext: { [weak self] (isLoading) in
             self?.loadingAnimation(isLoading)
         }).disposed(by: rx.disposeBag)
+
+        searchBar.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            .filter{!$0.isEmpty}
+            .subscribe(onNext: { [weak self] query in
+                self?.viewModel.doSomething(query: query)
+            }).disposed(by: rx.disposeBag)
+
+        searchBar.rx.searchButtonClicked
+            .bind { self.searchBar.resignFirstResponder() }
+            .disposed(by: rx.disposeBag)
+
+        self.viewModel.results
+            .drive(tableView.rx
+                .items(cellIdentifier: R.reuseIdentifier.movieTableViewCell.identifier,
+                       cellType: MovieTableViewCell.self)) { [weak self] _ , movie, cell in
+//                        guard let self = self else { return }
+                        cell.bind(MovieTableViewCellViewModel(movie: movie))
+//                        if self.tableView.isNearBottomEdge(edgeOffset: 20) {
+//                            // self.viewModel.requestTrigger.onNext(())
+//                        }
+        }.disposed(by: rx.disposeBag)
+
+        self.tableView.rx
+            .modelSelected(Movie.self)
+            .subscribe(onNext: { [unowned self ] (movie) in
+                self.delegate?.handle(sender: self, .showMovieDetails(movie))
+            }).disposed(by: rx.disposeBag)
 
     }
 
@@ -83,9 +118,3 @@ extension SearchViewController {
         }
     }
 }
-
-
-extension SearchViewController: UISearchBarDelegate {
-
-}
-

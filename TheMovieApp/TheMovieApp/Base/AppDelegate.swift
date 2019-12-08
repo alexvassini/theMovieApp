@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //setup firebase services if needed
         //setup crashlytics if needed
-        
+
         // Start AppCoordinator
         let currentWindow = UIWindow(frame: UIScreen.main.bounds)
         self.appCoordinator = TabBarCoordinator(window: currentWindow)

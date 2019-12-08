@@ -29,7 +29,8 @@ class MovieTableViewCellViewModel {
     }
 
     func getImageURL() -> URL? {
-        return URL(string: (imageBaseURL + movie.backdropPath))
+        guard let path = movie.backdropPath else { return nil}
+        return URL(string: (imageBaseURL + path))
     }
     
 }

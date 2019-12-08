@@ -27,5 +27,9 @@ class FeedServiceImpl: NSObject, FeedService {
     func getPopularMovieList(page: Int) -> Single<Response> {
         return provider.rx.request(.getPopularMovieList(page: page))
     }
-  
+
+    func searchMovies(query: String, page: Int) -> Single<Response> {
+        return provider.rx.request(.searchMovies(query: query, page: page))
+    }
+
 }

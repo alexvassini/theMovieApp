@@ -14,4 +14,5 @@ protocol FeedService {
 
     func getMovieDetails(movieId: Int) -> Single<Response>
     func getPopularMovieList(page: Int) -> Single<Response>
+    func searchMovies(query: String, page: Int) -> Single<Response>
 }

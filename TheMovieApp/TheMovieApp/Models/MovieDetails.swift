@@ -30,7 +30,6 @@ struct MovieDetails: Codable {
     let voteAverage: Double
     let voteCount: Int
     let credits: Credits
-    let reviews: Reviews
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -47,10 +46,10 @@ struct MovieDetails: Codable {
         case status, title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
-        case credits, reviews
+        case credits
     }
     
-    init(credits: Credits, reviews: Reviews) {
+    init(credits: Credits) {
         adult = false
         budget = 0
         genres = []
@@ -72,7 +71,6 @@ struct MovieDetails: Codable {
         voteAverage = 0
         voteCount = 0
         self.credits = credits
-        self.reviews = reviews
     }
 }
 
@@ -157,41 +155,5 @@ struct SpokenLanguage: Codable {
     enum CodingKeys: String, CodingKey {
         case iso639_1 = "iso_639_1"
         case name
-    }
-}
-
-struct Reviews: Codable {
-    let page: Int
-    let results: [Review]
-    let totalPages, totalResults: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case page, results
-        case totalPages = "total_pages"
-        case totalResults = "total_results"
-    }
-    init(reviews: [Review]) {
-        page = 0
-        results = reviews
-        totalPages = 0
-        totalResults = 0
-    }
-}
-
-struct Review: Codable {
-    let author, content, id: String
-    let url: String
-    
-    init() {
-        author = ""
-        content = ""
-        id = ""
-        url = ""
-    }
-    init(author: String, content: String) {
-        self.author = author
-        self.content = content
-        id = ""
-        url = ""
     }
 }

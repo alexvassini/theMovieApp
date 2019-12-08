@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import RxSwiftExt
 import RxSwiftUtilities
 import Moya
 
@@ -16,8 +15,9 @@ class SearchViewModel {
 
     private let repository: FeedRepository
 
+    let results: Driver<[Movie]>
     let isLoading: Driver<Bool>
-
+    let requestTrigger: PublishSubject<String> = PublishSubject()
 
     init(repository: FeedRepository = FeedRepositoryImpl()) {
 
@@ -29,7 +29,22 @@ class SearchViewModel {
             .startWith(false)
             .asDriver()
 
+        let response = requestTrigger
+            .flatMapLatest { query in
+                repository.searchMovies(query: query, page: 1)
+                    .trackActivity(loadingIndicator)
+                    .materialize()
+        }
+        
+        let moviesResult = response
+            .elements()
+            .startWith([])
+
+        self.results = moviesResult.asDriver(onErrorJustReturn: [])
     }
 
+    func doSomething(query: String) {
+        requestTrigger.onNext(query)
+    }
 }
 

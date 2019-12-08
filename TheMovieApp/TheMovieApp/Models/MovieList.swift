@@ -30,7 +30,7 @@ struct Movie: Codable {
     let posterPath: String
     let originalLanguage: String
     let originalTitle: String
-    let backdropPath: String
+    let backdropPath: String?
     let overview, releaseDate: String
     
     enum CodingKeys: String, CodingKey {

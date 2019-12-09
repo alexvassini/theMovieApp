@@ -15,24 +15,21 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var rattingLabel: UILabel!
-    
-    let imageBaseURL = "https://image.tmdb.org/t/p/w1280"
-    
-    
+
     override func prepareForReuse() {
         movieImage.image = nil
     }
     
-    func bind(_ movie: Movie) {
-        if let imageUrl = URL(string: (imageBaseURL + movie.backdropPath)){
+    func bind(_ model: MovieTableViewCellViewModel) {
+        if let imageUrl = model.getImageURL() {
             movieImage.af_setImage(withURL: imageUrl)
         }
         else {
             movieImage.image = R.image.placeholderImage()
         }
-        movieNameLabel.text = movie.originalTitle
-        releaseDateLabel.text = movie.releaseDate
-        rattingLabel.text = "\(movie.voteAverage)"
+        movieNameLabel.text = model.getMovieNameLabel()
+        releaseDateLabel.text = model.getReleaseDateLabel()
+        rattingLabel.text = model.getRattingLabel()
         
     }
     

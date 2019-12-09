@@ -51,27 +51,25 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
-    /// Nib `FeedView`.
-    static let feedView = _R.nib._FeedView()
-    /// Nib `MovieDetailsView`.
-    static let movieDetailsView = _R.nib._MovieDetailsView()
+    /// Nib `FeedViewController`.
+    static let feedViewController = _R.nib._FeedViewController()
+    /// Nib `MovieDetailsViewController`.
+    static let movieDetailsViewController = _R.nib._MovieDetailsViewController()
     /// Nib `MovieTableViewCell`.
     static let movieTableViewCell = _R.nib._MovieTableViewCell()
-    /// Nib `ReviewCardView`.
-    static let reviewCardView = _R.nib._ReviewCardView()
     
-    /// `UINib(name: "FeedView", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.feedView) instead")
-    static func feedView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.feedView)
+    /// `UINib(name: "FeedViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.feedViewController) instead")
+    static func feedViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.feedViewController)
     }
     
-    /// `UINib(name: "MovieDetailsView", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.movieDetailsView) instead")
-    static func movieDetailsView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.movieDetailsView)
+    /// `UINib(name: "MovieDetailsViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.movieDetailsViewController) instead")
+    static func movieDetailsViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.movieDetailsViewController)
     }
     
     /// `UINib(name: "MovieTableViewCell", in: bundle)`
@@ -80,26 +78,16 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.movieTableViewCell)
     }
     
-    /// `UINib(name: "ReviewCardView", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.reviewCardView) instead")
-    static func reviewCardView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.reviewCardView)
+    static func feedViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.feedViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
-    static func feedView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.feedView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-    }
-    
-    static func movieDetailsView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.movieDetailsView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    static func movieDetailsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.movieDetailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
     static func movieTableViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MovieTableViewCell? {
       return R.nib.movieTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MovieTableViewCell
-    }
-    
-    static func reviewCardView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.reviewCardView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
     
     fileprivate init() {}
@@ -145,9 +133,9 @@ struct _R: Rswift.Validatable {
   }
   
   struct nib {
-    struct _FeedView: Rswift.NibResourceType {
+    struct _FeedViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
-      let name = "FeedView"
+      let name = "FeedViewController"
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
@@ -156,9 +144,9 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _MovieDetailsView: Rswift.NibResourceType {
+    struct _MovieDetailsViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
-      let name = "MovieDetailsView"
+      let name = "MovieDetailsViewController"
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
@@ -176,17 +164,6 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> MovieTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? MovieTableViewCell
-      }
-      
-      fileprivate init() {}
-    }
-    
-    struct _ReviewCardView: Rswift.NibResourceType {
-      let bundle = R.hostingBundle
-      let name = "ReviewCardView"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
       }
       
       fileprivate init() {}

@@ -6,10 +6,6 @@
 //  Copyright © 2019 Alexandre Vassinievski Ribeiro. All rights reserved.
 //
 
-// To parse the JSON, do:
-//
-//   let movies = try? newJSONDecoder().decode(MovieList.self, from: jsonData)
-
 import Foundation
 
 struct MovieList: Codable {
@@ -22,8 +18,6 @@ struct MovieList: Codable {
         case totalPages = "total_pages"
         case movies = "results"
     }
-    
-
 }
 
 struct Movie: Codable {
@@ -35,7 +29,7 @@ struct Movie: Codable {
     let posterPath: String
     let originalLanguage: String
     let originalTitle: String
-    let backdropPath: String
+    let backdropPath: String?
     let overview, releaseDate: String
     
     enum CodingKeys: String, CodingKey {
@@ -50,7 +44,13 @@ struct Movie: Codable {
         case releaseDate = "release_date"
     }
     
-    init(originalTitle: String, releaseDate: String, voteAverage: Double, backdropPath: String, posterPath:String, overview: String, id: Int) {
+    init(originalTitle: String,
+         releaseDate: String,
+         voteAverage: Double,
+         backdropPath: String,
+         posterPath:String,
+         overview: String,
+         id: Int) {
         
         self.id = id
         video = false

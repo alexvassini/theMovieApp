@@ -10,34 +10,36 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class FeedView: UIViewController {
+class FeedViewController: UIViewController {
     
     let viewModel: FeedViewModel
-    let loadingView = LoadingView()
+    var loadingView = LoadingView()
     
     weak var delegate: AppActionable?
     
     @IBOutlet weak var tableView: UITableView!
     
-    init(viewModel: FeedViewModel = .init()) {
+    init(viewModel: FeedViewModel = .init(),
+         delegate: AppActionable? = nil) {
+
+        self.delegate = delegate
         self.viewModel = viewModel
-        super.init(nibName: String(describing: FeedView.self), bundle: nil)
+        super.init(nibName: String(describing: FeedViewController.self), bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViews()
         self.setupBindings()
     }
-    
+
 }
 
-extension FeedView {
-
+extension FeedViewController {
 
     func configureViews() {
         
@@ -58,21 +60,20 @@ extension FeedView {
         self.viewModel.results
             .drive(tableView.rx
                 .items(cellIdentifier: R.reuseIdentifier.movieTableViewCell.identifier,
-                       cellType: MovieTableViewCell.self)) { [unowned self] _ , movie, cell in
-                        cell.bind(movie)
+                       cellType: MovieTableViewCell.self)) { [weak self] _ , movie, cell in
+                        guard let self = self else { return }
+                        cell.bind(MovieTableViewCellViewModel(movie: movie))
                         if self.tableView.isNearBottomEdge(edgeOffset: 20) {
                             self.viewModel.requestTrigger.onNext(())
                         }
-            }.disposed(by: rx.disposeBag)
+        }.disposed(by: rx.disposeBag)
 
         self.tableView.rx
             .modelSelected(Movie.self)
             .subscribe(onNext: { [unowned self ] (movie) in
-                self.delegate?.handle(.showMovieDetails(movie))
+                self.delegate?.handle(sender: self, .showMovieDetails(movie))
             }).disposed(by: rx.disposeBag)
-        
-       
-        
+
         self.viewModel.requestTrigger.onNext( () )
         
     }
@@ -81,7 +82,6 @@ extension FeedView {
         DispatchQueue.main.async {
             isLoading ? self.loadingView.show() : self.loadingView.hide()
         }
-        
     }
     
 }

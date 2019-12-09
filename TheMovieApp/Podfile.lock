@@ -2,11 +2,6 @@ PODS:
   - Alamofire (4.8.0)
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
-  - KIF (3.7.4):
-    - KIF/Core (= 3.7.4)
-  - KIF/Core (3.7.4)
-  - KIF/IdentifierTests (3.7.4):
-    - KIF/Core
   - lottie-ios (2.5.2)
   - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
@@ -14,7 +9,6 @@ PODS:
   - Moya/RxSwift (12.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - Nimble (7.3.1)
   - R.swift (5.0.1):
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.0)
@@ -41,11 +35,8 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage
-  - KIF
-  - KIF/IdentifierTests
   - lottie-ios
   - Moya/RxSwift
-  - Nimble
   - R.swift
   - RxBlocking
   - RxCocoa
@@ -54,13 +45,11 @@ DEPENDENCIES:
   - RxSwiftUtilities
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireImage
-    - KIF
     - lottie-ios
     - Moya
-    - Nimble
     - R.swift
     - R.swift.Library
     - Result
@@ -74,10 +63,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
-  KIF: f3d01c109ee9d1cfe6b0f2bb2aa278e807e971e2
   lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   R.swift: a8e1a7e7f38441282fbcb7a3c266076eb38b77ba
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
@@ -88,6 +75,6 @@ SPEC CHECKSUMS:
   RxSwiftExt: 01f8ecbeeb355698e9c75365ebe908b00dacf45d
   RxSwiftUtilities: b486df7454cc867c3ea626ce24110511159e7044
 
-PODFILE CHECKSUM: 9977edbf2b3ccc1515e837d220c52f7ab1040620
+PODFILE CHECKSUM: 34c06d308d2938c22e4d4673722d4c8b2dea3e2d
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

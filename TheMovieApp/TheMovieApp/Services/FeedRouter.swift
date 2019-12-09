@@ -12,21 +12,24 @@ import Moya
 enum FeedRouter {
     case getMovieDetails(movieId: Int)
     case getPopularMovieList(page: Int)
+    case searchMovies(query: String, page: Int)
 }
 
 extension FeedRouter: TargetType {
     
     var baseURL: URL {
-        return URL(string: "https://api.themoviedb.org/3/movie")!
+        return URL(string: "https://api.themoviedb.org/3/")!
     }
    
     
     var path: String {
         switch self {
         case .getPopularMovieList:
-            return "/popular"
+            return "movie/popular"
         case .getMovieDetails(let id):
-            return "/\(id)"
+            return "movie/\(id)"
+        case .searchMovies:
+            return "search/movie"
         }
     }
     
@@ -42,7 +45,7 @@ extension FeedRouter: TargetType {
         switch self {
         default:
             if let `parameters` = parameters {
-                return .requestParameters(parameters: parameters, encoding: URLEncoding.default) //URLEncoding.default
+                return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
             } else {
                 return .requestPlain
             }
@@ -53,10 +56,16 @@ extension FeedRouter: TargetType {
         switch self {
         case .getMovieDetails:
             return ["api_key" : "432c9de63acf48d4822a16019607fd34",
-                    "append_to_response" : "credits,reviews"]
+                    "append_to_response" : "credits"]
         case .getPopularMovieList(let page):
             return ["api_key": "432c9de63acf48d4822a16019607fd34",
                     "language": "en-US",
+                    "page": page]
+        case .searchMovies(let query, let page):
+            let safeQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+            return ["api_key": "432c9de63acf48d4822a16019607fd34",
+                    "language": "en-US",
+                    "query": safeQuery,
                     "page": page]
         }
     }

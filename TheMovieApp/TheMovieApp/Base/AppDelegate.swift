@@ -12,18 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-   // var defaultContainer: DefaultContainer!
-    var appCoordinator: AppCoordinator!
+    var appCoordinator: TabBarCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         //setup firebase services if needed
         //setup crashlytics if needed
-        
+
         // Start AppCoordinator
         let currentWindow = UIWindow(frame: UIScreen.main.bounds)
-        self.appCoordinator = AppCoordinator(window: currentWindow)
+        self.appCoordinator = TabBarCoordinator(window: currentWindow)
         self.appCoordinator?.start()
         self.window = currentWindow
         self.window?.makeKeyAndVisible()

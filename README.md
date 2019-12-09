@@ -4,9 +4,9 @@ Criar um MVP de um app de catalogo de filmes que lista os filmes mais populares 
 
 # Referencias:
 
--> API: https://developers.themoviedb.org/3/getting-started/introduction
--> Paralax Header: https://blog.usejournal.com/parallax-header-with-just-constraints-c3df8a9244fc
--> RXMarbles: https://rxmarbles.com
+* API: https://developers.themoviedb.org/3/getting-started/introduction
+* Paralax Header: https://blog.usejournal.com/parallax-header-with-just-constraints-c3df8a9244fc
+* RXMarbles: https://rxmarbles.com
 
 # Arquitetura:
 
@@ -28,7 +28,8 @@ A Navegação é feita pela classe AppCoordinator
 
 # Melhorias futuras
 
+* Implementar paginação na busca
+* Melhorar cobertura de testes
 * Fazer requisição de outras listas que a api fornece
 * Mostrar lista de atores do filme
 * Criar tela de perfil dos atores
-* Melhorar apresentação do componente de reviews

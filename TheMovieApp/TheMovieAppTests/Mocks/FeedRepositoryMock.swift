@@ -19,16 +19,17 @@ class FeedRepositoryMock {
     
     var getMovieListInvokedCount = 0
     var getMovieDetailsInvokedCount = 0
-    var getMovieListSuccess = true
-    var getMovieDetailsSuccess = true
+    var searchMoviesInvokedCount = 0
+    var success = true
+    var repositoryHandler: (()->Void)?
 }
 
 extension FeedRepositoryMock: FeedRepository {
-    
-    func getMovieList() -> Single<[Movie]> {
+
+    func getMovieList(page: Int) -> Single<[Movie]> {
         self.getMovieListInvokedCount += 1
         var result:[Movie] = []
-        if getMovieListSuccess {
+        if success {
             result.append(MockData.movie)
             return .just(result)
         }
@@ -38,10 +39,15 @@ extension FeedRepositoryMock: FeedRepository {
             return subject.asSingle()
         }
     }
-    
+
+
+    func searchMovies(query: String, page: Int) -> Single<[Movie]> {
+        return .just([MockData.movie])
+    }
+
     func getMovieDetails(_ movieId: Int) -> Single<MovieDetails> {
         self.getMovieDetailsInvokedCount += 1
-        if getMovieDetailsSuccess {
+        if success {
             return .just(MockData.movieDetails)
         }
         else{

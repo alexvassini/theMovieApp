@@ -96,12 +96,8 @@ extension SearchViewController {
         self.viewModel.results
             .drive(tableView.rx
                 .items(cellIdentifier: R.reuseIdentifier.movieTableViewCell.identifier,
-                       cellType: MovieTableViewCell.self)) { [weak self] _ , movie, cell in
-//                        guard let self = self else { return }
+                       cellType: MovieTableViewCell.self)) { _ , movie, cell in
                         cell.bind(MovieTableViewCellViewModel(movie: movie))
-//                        if self.tableView.isNearBottomEdge(edgeOffset: 20) {
-//                            // self.viewModel.requestTrigger.onNext(())
-//                        }
         }.disposed(by: rx.disposeBag)
 
         self.tableView.rx

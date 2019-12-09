@@ -10,7 +10,6 @@
 		5E0A5E99221E299B005C1566 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A5E98221E299B005C1566 /* AppDelegate.swift */; };
 		5E0A5EA0221E299C005C1566 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A5E9F221E299C005C1566 /* Assets.xcassets */; };
 		5E0A5EA3221E299C005C1566 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A5EA1221E299C005C1566 /* LaunchScreen.storyboard */; };
-		5E0A5EAE221E299C005C1566 /* TheMovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A5EAD221E299C005C1566 /* TheMovieAppTests.swift */; };
 		5E0A5ECB221E2FF8005C1566 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A5ECA221E2FF8005C1566 /* MovieList.swift */; };
 		5E0A5ECD221E31C5005C1566 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A5ECC221E31C5005C1566 /* MovieDetails.swift */; };
 		5E0A5ECF221E32D3005C1566 /* FeedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A5ECE221E32D3005C1566 /* FeedRouter.swift */; };
@@ -41,6 +40,10 @@
 		5EB37CDD2224E4D100CB83BD /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB37CDC2224E4D000CB83BD /* UIColor + Extensions.swift */; };
 		98AD647818C816A197FB651A /* Pods_TheMovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD86C7368BC2315E2E419D5C /* Pods_TheMovieAppTests.framework */; };
 		A38893A7E67CE9FFC3B05917 /* Pods_TheMovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094BC5835BBA3528CA37C07E /* Pods_TheMovieApp.framework */; };
+		AC396299239DC10A00EBAB43 /* FeedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC396298239DC10A00EBAB43 /* FeedViewModelTests.swift */; };
+		AC39629B239DC11B00EBAB43 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39629A239DC11B00EBAB43 /* FeedViewControllerTests.swift */; };
+		AC39629E239DC5A200EBAB43 /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC39629D239DC5A200EBAB43 /* XCTestCase+Extensions.swift */; };
+		AC3A3F0D239DD55D0004A3BB /* MovieDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3F0C239DD55D0004A3BB /* MovieDetailsViewControllerTests.swift */; };
 		ACA9F34B2397311E0004380F /* MovieTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA9F34A2397311E0004380F /* MovieTableViewCellViewModel.swift */; };
 		ACC75434239C38D300E197DA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC75433239C38D300E197DA /* SearchViewController.swift */; };
 		ACC75437239C38F500E197DA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC75436239C38F500E197DA /* SearchViewModel.swift */; };
@@ -65,7 +68,6 @@
 		5E0A5EA2221E299C005C1566 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E0A5EA4221E299C005C1566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E0A5EA9221E299C005C1566 /* TheMovieAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovieAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E0A5EAD221E299C005C1566 /* TheMovieAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieAppTests.swift; sourceTree = "<group>"; };
 		5E0A5EAF221E299C005C1566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E0A5EB8221E299C005C1566 /* TheMovieAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieAppUITests.swift; sourceTree = "<group>"; };
 		5E0A5EBA221E299C005C1566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,6 +103,10 @@
 		84D4E025FF6D3257F3406A5C /* Pods_TheMovieAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD555E46E102602A1F69D09 /* Pods-TheMovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieAppTests/Pods-TheMovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A074AAAD06B31610B57B3861 /* Pods-TheMovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovieApp/Pods-TheMovieApp.release.xcconfig"; sourceTree = "<group>"; };
+		AC396298239DC10A00EBAB43 /* FeedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelTests.swift; sourceTree = "<group>"; };
+		AC39629A239DC11B00EBAB43 /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
+		AC39629D239DC5A200EBAB43 /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
+		AC3A3F0C239DD55D0004A3BB /* MovieDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		ACA9F34A2397311E0004380F /* MovieTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		ACC75433239C38D300E197DA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ACC75436239C38F500E197DA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -188,9 +194,10 @@
 		5E0A5EAC221E299C005C1566 /* TheMovieAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				AC396297239DC0E300EBAB43 /* Modules */,
 				5E209ED02223395800BDED06 /* Mocks */,
-				5E0A5EAD221E299C005C1566 /* TheMovieAppTests.swift */,
 				5E0A5EAF221E299C005C1566 /* Info.plist */,
+				AC39629D239DC5A200EBAB43 /* XCTestCase+Extensions.swift */,
 			);
 			path = TheMovieAppTests;
 			sourceTree = "<group>";
@@ -322,6 +329,32 @@
 				5E48ED90221F96460096F432 /* TabBarCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		AC396297239DC0E300EBAB43 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				AC3A3F0B239DD4D10004A3BB /* Details */,
+				AC39629C239DC12600EBAB43 /* Feed */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		AC39629C239DC12600EBAB43 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				AC39629A239DC11B00EBAB43 /* FeedViewControllerTests.swift */,
+				AC396298239DC10A00EBAB43 /* FeedViewModelTests.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		AC3A3F0B239DD4D10004A3BB /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				AC3A3F0C239DD55D0004A3BB /* MovieDetailsViewControllerTests.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		ACC75435239C38DA00E197DA /* Search */ = {
@@ -576,8 +609,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E0A5EAE221E299C005C1566 /* TheMovieAppTests.swift in Sources */,
+				AC3A3F0D239DD55D0004A3BB /* MovieDetailsViewControllerTests.swift in Sources */,
 				5E209ED522234E4800BDED06 /* MockData.swift in Sources */,
+				AC39629B239DC11B00EBAB43 /* FeedViewControllerTests.swift in Sources */,
+				AC396299239DC10A00EBAB43 /* FeedViewModelTests.swift in Sources */,
+				AC39629E239DC5A200EBAB43 /* XCTestCase+Extensions.swift in Sources */,
 				5E209ED22223397E00BDED06 /* FeedRepositoryMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

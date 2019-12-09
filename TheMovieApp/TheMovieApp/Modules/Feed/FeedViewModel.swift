@@ -16,7 +16,7 @@ class FeedViewModel {
     let repository: FeedRepository
     
     let results: Driver<[Movie]>
-    let isLoading: Driver<Bool>
+    var isLoading: Driver<Bool>
     let requestTrigger: PublishSubject<Void> = PublishSubject()
     
     init(repository: FeedRepository = FeedRepositoryImpl()) {

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Alexandre Vassinievski Ribeiro. All rights reserved.
 //
 
-
 import Foundation
 
 struct MovieList: Codable {
@@ -45,7 +44,13 @@ struct Movie: Codable {
         case releaseDate = "release_date"
     }
     
-    init(originalTitle: String, releaseDate: String, voteAverage: Double, backdropPath: String, posterPath:String, overview: String, id: Int) {
+    init(originalTitle: String,
+         releaseDate: String,
+         voteAverage: Double,
+         backdropPath: String,
+         posterPath:String,
+         overview: String,
+         id: Int) {
         
         self.id = id
         video = false

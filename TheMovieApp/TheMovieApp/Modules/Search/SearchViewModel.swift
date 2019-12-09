@@ -35,7 +35,7 @@ class SearchViewModel {
                     .trackActivity(loadingIndicator)
                     .materialize()
         }
-        
+
         let moviesResult = response
             .elements()
             .startWith([])

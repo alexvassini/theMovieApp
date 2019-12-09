@@ -13,7 +13,7 @@ import RxCocoa
 class FeedViewController: UIViewController {
     
     let viewModel: FeedViewModel
-    let loadingView = LoadingView()
+    var loadingView = LoadingView()
     
     weak var delegate: AppActionable?
     

@@ -15,7 +15,7 @@ import Moya
 class MovieDetailsViewModel {
 
     private let repository: FeedRepository
-    private let movie: Movie
+    let movie: Movie
     private let imageBaseURL = "https://image.tmdb.org/t/p/w1280"
     private let posterBaseURL = "https://image.tmdb.org/t/p/w500"
     private let fetchMovieData: PublishSubject<Int> = PublishSubject()

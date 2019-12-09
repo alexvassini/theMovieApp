@@ -18,13 +18,6 @@ struct MockData {
                       overview: "The most dangerous former operative of the CIA is drawn out of hiding to uncover hidden truths about his past.",
                       id: 297761)
     
-    static let review1 = Review(author: "Juvenal", content: "Odiei! 5 estrelas")
-    
-    static let review2 = Review(author: "Genesio", content: "Amei!!! 3 estrelas")
-    
-    static let reviewList = Reviews(reviews: [MockData.review1 , MockData.review2])
-    
-    
     static let crew1 = Crew(job: "Director", name: "Xôsseff")
     static let crew2 = Crew(job: "Producer", name: "Xisellen")
     static let crew3 = Crew(job: "Camera", name: "Xôana")
@@ -40,6 +33,6 @@ struct MockData {
         Crew(job: "Producer", name: "Xôaum"),
         Crew(job: "Director", name: "Xôzué")])
     
-    static let movieDetails = MovieDetails(credits: MockData.credits, reviews: MockData.reviewList)
+    static let movieDetails = MovieDetails(credits: MockData.credits)
     
 }

@@ -7,12 +7,12 @@ Criar um MVP de um app de catalogo de filmes que lista os filmes mais populares 
 * API: https://developers.themoviedb.org/3/getting-started/introduction
 * Paralax Header: https://blog.usejournal.com/parallax-header-with-just-constraints-c3df8a9244fc
 * RXMarbles: https://rxmarbles.com
+* iOS Architecture: MVVM-C: https://medium.com/sudo-by-icalia-labs/ios-architecture-mvvm-c-introduction-1-6-815204248518
 
 # Arquitetura:
 
-O Projeto foi construido em MVVM usando RxSwift em todas as camadas.
-Cada View é um modulo que possui seu próprio .xib, view e viewModel
-A Navegação é feita pela classe AppCoordinator
+* O Projeto foi construido em MVVM+C usando RxSwift em todas as camadas.
+👉 https://medium.com/sudo-by-icalia-labs/ios-architecture-mvvm-c-introduction-1-6-815204248518
 
 # Bibliotecas: 
 

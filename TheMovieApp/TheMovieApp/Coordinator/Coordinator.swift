@@ -14,16 +14,17 @@ protocol Coordinator: AnyObject {
 }
 
 protocol NavigationCoordinator: AnyObject {
-
     var navigation: UINavigationController! { get }
     var delegate: AppActionable? { get set }
     var tabBarIndex: Int { get }
-
+    
     func start() -> UINavigationController
     func pushViewController(_ viewController: UIViewController)
-    func presentNavigationController(_ controller: UINavigationController,
-                                     presentationStyle: UIModalPresentationStyle,
-                                     animated: Bool)
+    func presentNavigationController(
+        _ controller: UINavigationController,
+        presentationStyle: UIModalPresentationStyle,
+        animated: Bool
+    )
 }
 
 protocol AppActionable: AnyObject {
